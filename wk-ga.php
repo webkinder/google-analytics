@@ -217,24 +217,49 @@ class wk_ga {
    *
    * @since 1.0
    * @see https://codex.wordpress.org/Function_Reference/register_setting
+   * @see https://codex.wordpress.org/Function_Reference/add_settings_section
+   * @see https://codex.wordpress.org/Function_Reference/add_settings_field
    *
    */
   function register_settings() {
 
-    /**
-     * @since 1.0
-     */
-    register_setting(
-         'wk_ga_google_analytics',
-         'ga_tracking_code'
+    add_settings_section(
+      'google_analytics',
+      __('Google Analytics', 'wk-ga'),
+      array( $this, 'settings_header'),
+      'google_analytics'
     );
 
     /**
      * @since 1.0
      */
     register_setting(
-         'wk_ga_google_analytics',
-         'track_logged_in'
+      'wk_ga_google_analytics',
+      'ga_tracking_code'
+    );
+
+    add_settings_field(
+      'ga_tracking_code',
+      __('GA Tracking Code', 'wk-ga'),
+      array( $this, 'tracking_code_field' ),
+      'google_analytics',
+      'google_analytics'
+    );
+
+    /**
+     * @since 1.0
+     */
+    register_setting(
+      'wk_ga_google_analytics',
+      'track_logged_in'
+    );
+
+    add_settings_field(
+      'ga_anonymize_ip',
+      __('Anonymize IP"s', 'wk-ga'),
+      array( $this, 'anonymize_ip_field' ),
+      'google_analytics',
+      'google_analytics'
     );
 
     /**
@@ -245,12 +270,28 @@ class wk_ga {
       'ga_anonymize_ip'
     );
 
+    add_settings_field(
+      'track_logged_in',
+      __('Track logged in users', 'wk-ga'),
+      array( $this, 'track_logged_in_field' ),
+      'google_analytics',
+      'google_analytics'
+    );
+
     /**
      * @since 1.2
      */
     register_setting(
       'wk_ga_google_analytics',
       'ga_use_tag_manager'
+    );
+
+    add_settings_field(
+      'ga_use_tag_manager',
+      __('Use Google Tag Manager instead', 'wk-ga'),
+      array( $this, 'use_tag_manager_field' ),
+      'google_analytics',
+      'google_analytics'
     );
 
     /**
@@ -260,7 +301,119 @@ class wk_ga {
       'wk_ga_google_analytics',
       'ga_tag_manager_id'
     );
+
+    add_settings_field(
+      'ga_tag_manager_id',
+      __('Google Tag Manager ID', 'wk-ga'),
+      array( $this, 'tag_manager_id_field' ),
+      'google_analytics',
+      'google_analytics'
+    );
+
 	}
+
+  /**
+   * Renders the
+   *
+   * @since 1.6.2
+   *
+   */
+  function settings_header() {
+    ?>
+
+    <p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-ga'); ?></p>
+
+    <?php
+  }
+
+  /**
+   *
+   * @since 1.6.2
+   *
+   */
+  function tracking_code_field() {
+
+    $field = 'ga_tracking_code';
+    $value = esc_attr( get_option( $field ) );
+
+    ?>
+
+    <input type="text" name="<?php echo $field; ?>" placeholder="UA-XXXXXXXX-X" value="<?php echo $value; ?>" />
+
+    <?php
+  }
+
+  /**
+   *
+   * @since 1.6.2
+   *
+   */
+  function anonymize_ip_field() {
+
+    $field = 'ga_anonymize_ip';
+    $value = get_option( $field );
+
+    ?>
+
+    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+
+    <?php
+
+  }
+
+  /**
+   *
+   * @since 1.6.2
+   *
+   */
+  function track_logged_in_field() {
+
+    $field = 'track_logged_in';
+    $value = get_option( $field );
+
+    ?>
+
+    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+
+    <?php
+
+  }
+
+  /**
+   *
+   * @since 1.6.2
+   *
+   */
+  function use_tag_manager_field() {
+
+    $field = 'ga_use_tag_manager';
+    $value = get_option( $field );
+
+    ?>
+
+    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+
+    <?php
+
+  }
+
+  /**
+   *
+   * @since 1.6.2
+   *
+   */
+  function tag_manager_id_field() {
+
+    $field = 'ga_tag_manager_id';
+    $value = esc_attr( get_option( $field ) );
+
+    ?>
+
+    <input type="text" name="<?php echo $field; ?>" placeholder="GTM-XXXXXX" value="<?php echo $value; ?>" />
+
+    <?php
+
+  }
 
 	/**
 	 * Loads all the admin scripts for settings page
@@ -332,32 +485,10 @@ class wk_ga {
       </div>
     <?php endif; ?>
 
-  	<p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-ga'); ?></p>
     <div class="wk-left-part">
       <form id="wk-google-analytics-settings" method="post" action="options.php">
         <?php settings_fields( 'wk_ga_google_analytics' ); ?>
-        <?php do_settings_sections('wk_ga_google_analytics'); ?>
-
-        <div class="use-google-analytics">
-          <label><?php _e('GA Tracking Code', 'wk-ga'); ?></label>
-          <input type="text" name="ga_tracking_code" placeholder="UA-XXXXXXXX-X" value="<?php echo esc_attr( get_option( "ga_tracking_code" ) ); ?>" />
-        </div>
-        <div class="use-google-analytics">
-          <label><?php _e("Anonymize IP's", 'wk-ga'); ?></label>
-          <input type="checkbox" name="ga_anonymize_ip" value="1" <?php checked( get_option( "ga_anonymize_ip") ); ?> />
-        </div>
-        <div>
-        	<label><?php _e('Track logged in users', 'wk-ga'); ?></label>
-        	<input type="checkbox" name="track_logged_in" value="1" <?php checked( get_option( "track_logged_in" ) ); ?> />
-        </div>
-        <div>
-          <label><?php _e("Use Google Tag Manager instead", 'wk-ga'); ?></label>
-          <input id="use-google-tag-manager" type="checkbox" name="ga_use_tag_manager" value="1" <?php checked( get_option( "ga_use_tag_manager") ); ?> />
-        </div>
-        <div class="use-google-tag-manager">
-          <label><?php _e("Google Tag Manager ID", 'wk-ga'); ?></label>
-          <input type="text" name="ga_tag_manager_id" placeholder="GTM-XXXXXX" value="<?php echo esc_attr( get_option( "ga_tag_manager_id" ) ); ?>" />
-        </div>
+        <?php do_settings_sections('google_analytics'); ?>
         <div id="track-device"></div>
         <?php submit_button(); ?>
       </form>
