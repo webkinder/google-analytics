@@ -3,7 +3,7 @@
 Plugin Name: Google Analytics by WebKinder
 Plugin URI:  https://wordpress.org/plugins/wk-google-analytics/
 Description: Google Analytics for WordPress without tracking your own visits
-Version:     1.6.1
+Version:     1.6.2
 Author:      WebKinder
 Author URI:  http://www.webkinder.ch
 License:     GPL2
@@ -13,177 +13,263 @@ Text Domain: wk-ga
 */
 
 class wk_ga {
-    public function __construct() {
+  public function __construct() {
 
-    	//Lifecycle hooks
-    	register_activation_hook( __FILE__, array( $this, "activation" ) );
-    	register_deactivation_hook( __FILE__, array( $this, "deactivation" ) );
+    //lifecycle hooks
+    register_activation_hook( __FILE__, array( $this, "activation" ) );
+    register_deactivation_hook( __FILE__, array( $this, "deactivation" ) );
 
-    	//i18n
-    	add_action('plugins_loaded', array( $this, "load_textdomain") );
+    //i18n
+    add_action('plugins_loaded', array( $this, "load_textdomain") );
 
-    	//Settings
-    	add_action( 'admin_init', array( $this, "register_settings" ) );
-    	add_action( 'admin_menu', array( $this, "settings_page" ) );
+  	//settings
+  	add_action( 'admin_init', array( $this, "register_settings" ) );
+  	add_action( 'admin_menu', array( $this, "settings_page" ) );
 
-    	//Cookie Handling
-    	add_action( 'admin_enqueue_scripts', array( $this, "load_admin_scripts" ) );
+  	//cookie handling
+  	add_action( 'admin_enqueue_scripts', array( $this, "load_admin_scripts" ) );
 
-      //Cookie function
-      add_action( 'wp_head', array( $this, 'render_script') );
+    //cookie function
+    add_action( 'wp_head', array( $this, 'render_script') );
 
-      //Google Analytics script in <head>
-      add_action( 'wp_head', array( $this, 'google_analytics_script') );
+    //Google Analytics script in <head>
+    add_action( 'wp_head', array( $this, 'google_analytics_script') );
 
-      //Google Tag Manager script in header
-      add_action( 'wp_head', array( $this, 'google_tag_manager_script'));
+    //Google Tag Manager script in header
+    add_action( 'wp_head', array( $this, 'google_tag_manager_script'));
 
-      //Google Tag Manager noscript footer
-      add_action( 'wp_footer', array( $this, 'google_tag_manager_noscript'));
+    //Google Tag Manager noscript footer
+    add_action( 'wp_footer', array( $this, 'google_tag_manager_noscript'));
+
+    //additional links to admin plugin page
+    add_filter( 'plugin_row_meta', array( $this, 'additional_admin_information_links' ), 10, 2);
+    add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'additional_admin_action_links' ) );
+
+  }
+
+  /**
+   * Adds custom links to wk-google-analytics on admin plugin screen on the RIGHT
+   *
+   * @since 1.6.2
+   * @see https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_row_meta
+   *
+   */
+  function additional_admin_information_links( $links, $file ) {
+
+    $base = plugin_basename(__FILE__);
+
+    if ($file == $base) {
+      $links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-ga') . '</a>';
     }
 
-    /*
-     * Should Track Visit
-     */
-    function should_track_visit() {
-      return ( !is_user_logged_in() || get_option('track_logged_in') );
-    }
+    return $links;
 
-    /*
-     * Render Script
-     */
-    function render_script() {
+  }
+
+  /**
+   * Adds custom links to wk-google-analytics on admin plugin screen on the LEFT
+   *
+   * @since 1.6.2
+   * @see https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_action_links_(plugin_file_name)
+   *
+   */
+  function additional_admin_action_links( $links ) {
+
+    return array_merge( array('settings' => '<a href="' . admin_url( '/options-general.php?page=google_analytics' ) . '">' . __( 'Settings', 'wk-ga' ) . '</a>'),  $links );
+
+  }
+
+  /**
+   * Returns whether the current request should be tracked or not
+   *
+   * @since 1.2
+   * @return boolean
+   *
+   */
+  function should_track_visit() {
+    return ( !is_user_logged_in() || get_option('track_logged_in') );
+  }
+
+  /**
+   * Returns if the cookie is present
+   *
+   * @since 1.2
+   * @return boolean
+   *
+   */
+  function render_script() {
+    ?>
+    <script>
+    function hasWKGoogleAnalyticsCookie() {
+      return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname) ).test(document.cookie);
+    }
+    </script>
+    <?php
+  }
+
+  /**
+   * Outputs the Google Tag Manager script tag if necessary
+   *
+   * @since 1.2
+   *
+   */
+  function google_tag_manager_script() {
+    if( $this->should_track_visit() && get_option('ga_use_tag_manager') ) {
+      $TAG_MANAGER_ID   = get_option('ga_tag_manager_id');
       ?>
       <script>
-      function hasWKGoogleAnalyticsCookie() {
-        return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname) ).test(document.cookie);
-      }
+        if( !hasWKGoogleAnalyticsCookie() ) {
+          //Google Tag Manager
+          (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','<?php echo $TAG_MANAGER_ID; ?>');
+        }
       </script>
       <?php
     }
+  }
 
-    /*
-     * Tag Manager Script Tag
-     */
-     function google_tag_manager_script() {
-       if( $this->should_track_visit() && get_option('ga_use_tag_manager') ) {
-         $TAG_MANAGER_ID   = get_option('ga_tag_manager_id');
-         ?>
-         <script>
-         if( !hasWKGoogleAnalyticsCookie() ) {
-           //Google Tag Manager
-           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-           '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-           })(window,document,'script','dataLayer','<?php echo $TAG_MANAGER_ID; ?>');
-         }
-         </script>
-         <?php
-       }
-     }
+  /**
+   * Outputs the Google Tag Manager noscript tag if necessary
+   *
+   * @since 1.6
+   *
+   */
+  function google_tag_manager_noscript() {
+    if( $this->should_track_visit() && get_option('ga_use_tag_manager') ) {
+      $TAG_MANAGER_ID   = get_option('ga_tag_manager_id');
+      ?>
+      <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
-     /*
-      * Tag Manager Script Tag
-      */
-      function google_tag_manager_noscript() {
-        if( $this->should_track_visit() && get_option('ga_use_tag_manager') ) {
-          $TAG_MANAGER_ID   = get_option('ga_tag_manager_id');
-          ?>
-          <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
-          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-
-          <?php
-        }
-      }
-
-     /*
-      * Google Analytics Script Tag
-      */
-    function google_analytics_script() {
-      if( $this->should_track_visit() && ! get_option('ga_use_tag_manager') ) {
-        $GA_TRACKING_CODE = get_option('ga_tracking_code');
-        $ANONYMIZE_IP     = get_option('ga_anonymize_ip');
-        ?>
-        <script>
-        if( !hasWKGoogleAnalyticsCookie() ) {
-          //Google Analytics
-    			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-      		ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
-          <?php
-            if( $ANONYMIZE_IP ) :
-          ?>
-            //anonymize IP
-            ga('set', 'anonymizeIp', true);
-          <?php
-            endif;
-          ?>
-          ga('send', 'pageview');
-        }
-        </script>
-          <?php
-      }
+      <?php
     }
+  }
 
-    /*
-     * Load Text Domain
-     */
+  /**
+   * Outputs the Google Analytics script if necessary
+   *
+   * @since 1.2
+   *
+   */
+  function google_analytics_script() {
+    if( $this->should_track_visit() && ! get_option('ga_use_tag_manager') ) {
+      $GA_TRACKING_CODE = get_option('ga_tracking_code');
+      $ANONYMIZE_IP     = get_option('ga_anonymize_ip');
+      ?>
+      <script>
+      if( !hasWKGoogleAnalyticsCookie() ) {
+        //Google Analytics
+  			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    		ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
+        <?php
+          if( $ANONYMIZE_IP ) :
+        ?>
+          //anonymize IP
+          ga('set', 'anonymizeIp', true);
+        <?php
+          endif;
+        ?>
+        ga('send', 'pageview');
+      }
+      </script>
+        <?php
+    }
+  }
+
+  /**
+   * Sets up the translations in /lang directory
+   *
+   * @since 1.0
+   *
+   */
 	function load_textdomain() {
 		load_plugin_textdomain( 'wk-ga', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
 	}
 
-    /*
-     * Plugin Activation
+  /**
+   * Placeholder function for plugin activation
+   *
+   * @since 1.0
+   *
+   */
+  function activation() {
+
+  }
+
+  /**
+   * Placeholder function for plugin deactivation
+   *
+   * @since 1.0
+   *
+   */
+  function deactivation() {
+
+  }
+
+  /**
+   * Registers all the settings separately
+   *
+   * @since 1.0
+   * @see https://codex.wordpress.org/Function_Reference/register_setting
+   *
+   */
+  function register_settings() {
+
+    /**
+     * @since 1.0
      */
-    public function activation() {
+    register_setting(
+         'wk_ga_google_analytics',
+         'ga_tracking_code'
+    );
 
-    }
-
-    /*
-     * Plugin Deactivation
+    /**
+     * @since 1.0
      */
-    public function deactivation() {
+    register_setting(
+         'wk_ga_google_analytics',
+         'track_logged_in'
+    );
 
-    }
-
-    /*
-     * Register Settings
+    /**
+     * @since 1.1
      */
-    public function register_settings() {
-	    register_setting(
-	         'wk_ga_google_analytics',
-	         'ga_tracking_code'
-	    );
+    register_setting(
+      'wk_ga_google_analytics',
+      'ga_anonymize_ip'
+    );
 
-	    register_setting(
-	         'wk_ga_google_analytics',
-	         'track_logged_in'
-	    );
+    /**
+     * @since 1.2
+     */
+    register_setting(
+      'wk_ga_google_analytics',
+      'ga_use_tag_manager'
+    );
 
-      register_setting(
-        'wk_ga_google_analytics',
-        'ga_anonymize_ip'
-      );
-
-      register_setting(
-        'wk_ga_google_analytics',
-        'ga_use_tag_manager'
-      );
-
-      register_setting(
-        'wk_ga_google_analytics',
-        'ga_tag_manager_id'
-      );
-
+    /**
+     * @since 1.2
+     */
+    register_setting(
+      'wk_ga_google_analytics',
+      'ga_tag_manager_id'
+    );
 	}
 
-	/*
-	 *
+	/**
+	 * Loads all the admin scripts for settings page
+   *
+   * @since 1.0
+   * @see https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
+   *
 	 */
-	public function load_admin_scripts( $hook ) {
+	function load_admin_scripts( $hook ) {
 		if( $hook != "settings_page_google_analytics" ) {
 			return;
 		}
@@ -206,70 +292,84 @@ class wk_ga {
 
 	}
 
-    /*
-     * Settings Page
-     */
-    public function settings_page() {
-        add_options_page(
-        'Google Analytics',
-        'Google Analytics',
-        'manage_options',
-        'google_analytics',
-        array( $this, "settings_content" )
-    	);
-    }
+  /**
+   * Add an options page under 'Settings'
+   *
+   * @since 1.0
+   * @see https://codex.wordpress.org/Function_Reference/add_options_page
+   *
+   */
+  function settings_page() {
+      add_options_page(
+      'Google Analytics',
+      'Google Analytics',
+      'manage_options',
+      'google_analytics',
+      array( $this, "settings_content" )
+  	);
+  }
 
-    public function settings_content() {
+  /**
+   * Ouputs the markup for the options page
+   *
+   * @since 1.0
+   *
+   */
+  function settings_content() {
 
     if ( ! isset( $_REQUEST['settings-updated'] ) )
-          $_REQUEST['settings-updated'] = false;
+      $_REQUEST['settings-updated'] = false;
     ?>
-	    <div class="wrap">
-	        <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-			<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
-            	<div class="updated fade"><p><strong><a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php _e( 'Test your tracking code now!', 'wk-ga' ); ?></a></strong></p>
-            	</div>
-          	<?php endif; ?>
+  	<div class="wrap">
+  	   <h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	        <p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-ga'); ?>
-	        </p>
-          <div class="wk-left-part">
-  	        <form id="wk-google-analytics-settings" method="post" action="options.php">
-                  <?php settings_fields( 'wk_ga_google_analytics' ); ?>
-                  <?php do_settings_sections('wk_ga_google_analytics'); ?>
+  	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
+      <div class="updated fade">
+        <p>
+          <strong><a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php _e( 'Test your tracking code now!', 'wk-ga' ); ?></a></strong>
+        </p>
+      </div>
+    <?php endif; ?>
 
-                  <div class="use-google-analytics">
-  	                <label><?php _e('GA Tracking Code', 'wk-ga'); ?></label>
-  	                <input type="text" name="ga_tracking_code" placeholder="UA-XXXXXXXX-X" value="<?php echo esc_attr( get_option( "ga_tracking_code" ) ); ?>" />
-  	              </div>
-                  <div class="use-google-analytics">
-                    <label><?php _e("Anonymize IP's", 'wk-ga'); ?></label>
-                    <input type="checkbox" name="ga_anonymize_ip" value="1" <?php checked( get_option( "ga_anonymize_ip") ); ?> />
-                  </div>
-                  <div>
-                  	<label><?php _e('Track logged in users', 'wk-ga'); ?></label>
-                  	<input type="checkbox" name="track_logged_in" value="1" <?php checked( get_option( "track_logged_in" ) ); ?> />
-                  </div>
-                  <div>
-                    <label><?php _e("Use Google Tag Manager instead", 'wk-ga'); ?></label>
-                    <input id="use-google-tag-manager" type="checkbox" name="ga_use_tag_manager" value="1" <?php checked( get_option( "ga_use_tag_manager") ); ?> />
-                  </div>
-                  <div class="use-google-tag-manager">
-                    <label><?php _e("Google Tag Manager ID", 'wk-ga'); ?></label>
-                    <input type="text" name="ga_tag_manager_id" placeholder="GTM-XXXXXX" value="<?php echo esc_attr( get_option( "ga_tag_manager_id" ) ); ?>" />
-                  </div>
-                  <div id="track-device"></div>
-                  <?php submit_button(); ?>
-              </form>
-          </div>
-          <div class="wk-right-part">
-            <?php include_once( __DIR__ . "/includes/mailchimp-form.php" ); ?>
-          </div>
-	    </div>
+  	<p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-ga'); ?></p>
+    <div class="wk-left-part">
+      <form id="wk-google-analytics-settings" method="post" action="options.php">
+        <?php settings_fields( 'wk_ga_google_analytics' ); ?>
+        <?php do_settings_sections('wk_ga_google_analytics'); ?>
 
-   	<?php
-	}
+        <div class="use-google-analytics">
+          <label><?php _e('GA Tracking Code', 'wk-ga'); ?></label>
+          <input type="text" name="ga_tracking_code" placeholder="UA-XXXXXXXX-X" value="<?php echo esc_attr( get_option( "ga_tracking_code" ) ); ?>" />
+        </div>
+        <div class="use-google-analytics">
+          <label><?php _e("Anonymize IP's", 'wk-ga'); ?></label>
+          <input type="checkbox" name="ga_anonymize_ip" value="1" <?php checked( get_option( "ga_anonymize_ip") ); ?> />
+        </div>
+        <div>
+        	<label><?php _e('Track logged in users', 'wk-ga'); ?></label>
+        	<input type="checkbox" name="track_logged_in" value="1" <?php checked( get_option( "track_logged_in" ) ); ?> />
+        </div>
+        <div>
+          <label><?php _e("Use Google Tag Manager instead", 'wk-ga'); ?></label>
+          <input id="use-google-tag-manager" type="checkbox" name="ga_use_tag_manager" value="1" <?php checked( get_option( "ga_use_tag_manager") ); ?> />
+        </div>
+        <div class="use-google-tag-manager">
+          <label><?php _e("Google Tag Manager ID", 'wk-ga'); ?></label>
+          <input type="text" name="ga_tag_manager_id" placeholder="GTM-XXXXXX" value="<?php echo esc_attr( get_option( "ga_tag_manager_id" ) ); ?>" />
+        </div>
+        <div id="track-device"></div>
+        <?php submit_button(); ?>
+      </form>
+    </div>
+      <div class="wk-right-part">
+        <?php include_once( __DIR__ . "/includes/mailchimp-form.php" ); ?>
+      </div>
+  	</div>
+
+  <?php
+
+  }
 
 }
 
