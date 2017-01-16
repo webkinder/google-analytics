@@ -1,0 +1,49 @@
+/*
+ * Google Analytics by WebKinder
+ * Admin CSS Styles
+ */
+
+ #wk-google-analytics-settings>div {
+ 	margin-bottom: 15px;
+ }
+
+ #mc_embed_signup .mc-field-group {
+   margin-bottom: 15px;
+ }
+
+ /*====================GRID=================*/
+
+@media screen and (min-width: 768px) {
+
+  .wk-left-part,
+  .wk-right-part {
+    display: inline-block;
+  }
+
+  .wk-left-part {
+    width: 70%;
+    vertical-align: top;
+  }
+
+  .wk-right-part {
+    width: 25%;
+    vertical-align:top;
+  }
+
+}
+
+/*==============MAILCHIMP==================*/
+
+#mc_embed_signup .mc-field-group label {
+  width: 100px;
+  display: inline-block;
+}
+
+#mc_embed_signup .mc-field-group {
+  margin-bottom: 5px;
+}
+
+#mc_embed_signup .mc-field-group .asterisk {
+  margin-left: 5px;
+  color: red;
+}

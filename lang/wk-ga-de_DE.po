@@ -1,0 +1,100 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Google Analytics by WebKinder\n"
+"POT-Creation-Date: 2016-12-10 09:41+0100\n"
+"PO-Revision-Date: 2016-12-10 09:42+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: wk-ga.php\n"
+"X-Poedit-SearchPath-1: includes\n"
+
+#: includes/mailchimp-form.php:11
+msgid "Stay updated on this plugin"
+msgstr "Erfahre das Wichtigste über jedes Update"
+
+#: includes/mailchimp-form.php:13
+msgid "Email Address"
+msgstr "Email Adresse"
+
+#: includes/mailchimp-form.php:17
+msgid "First Name"
+msgstr "Vorname"
+
+#: includes/mailchimp-form.php:21
+msgid "Last Name"
+msgstr "Nachname"
+
+#: includes/mailchimp-form.php:30
+msgid "Subscribe"
+msgstr "Abonnieren"
+
+#: wk-ga.php:202
+msgid "Do not track any visits from this device."
+msgstr "Keine Besuche von diesem Gerät tracken."
+
+#: wk-ga.php:231
+msgid "Test your tracking code now!"
+msgstr "Teste deinen Tracking Code jetzt!"
+
+#: wk-ga.php:235
+msgid ""
+"Enter your Google Analytics tracking code below. You can also use Google Tag "
+"Manager instead by checking the relevant setting."
+msgstr ""
+"Gib deinen Google Analytics Tracking Code unten ein. Alternativ kann auch "
+"Google Tag Manager verwendet werden, indem das entsprechende Setting gesetzt "
+"wird."
+
+#: wk-ga.php:243
+msgid "GA Tracking Code"
+msgstr "GA Tracking Code"
+
+#: wk-ga.php:247
+msgid "Anonymize IP's"
+msgstr "IP Anonymisierung"
+
+#: wk-ga.php:251
+msgid "Track logged in users"
+msgstr "Eingeloggte Benutzer tracken"
+
+#: wk-ga.php:255
+msgid "Use Google Tag Manager instead"
+msgstr "Google Tag Manager verwenden"
+
+#: wk-ga.php:259
+msgid "Google Tag Manager ID"
+msgstr "Google Tag Manager ID"
+
+#~ msgid "Page visits from this device are not tracked."
+#~ msgstr "Seitenbesuche von diesem Gerät werden nicht getrackt."
+
+#~ msgid "This device is treated like any other"
+#~ msgstr "Dieses Gerät wird wie jedes Andere behandelt."
+
+#~ msgid "Use Google tag manager instead"
+#~ msgstr "Benutze Google Tag Manager"
+
+#~ msgid "Stay updated on our plugins"
+#~ msgstr "Erfahre das Neuste über unsere Plugins"
+
+#~ msgid ""
+#~ "Enter your Google Analytics tracking code below. There are two additional "
+#~ "mechanisms that allow you to stop tracking your own visits. The first one "
+#~ "checks if you are logged in as a WordPress User. The second one allows "
+#~ "you to stop tracking certain devices totally by setting a cookie."
+#~ msgstr ""
+#~ "Gib deinen Google Analytics Tracking Code unten ein. Es gibt zwei "
+#~ "zusätzliche Mechanismen, die dir erlauben deine eigenen Seitenbesuche "
+#~ "nicht mehr zu tracken. Der erste prüft, ob du als WordPress User "
+#~ "angemeldet bist. Der zweite gibt dir die Möglichkeit über ein Cookie "
+#~ "sämtliche Seitenbesuche von einem bestimmten Gerät aus nicht mehr zu "
+#~ "tracken."
