@@ -16,18 +16,18 @@ class wk_ga {
   public function __construct() {
 
     //lifecycle hooks
-    register_activation_hook( __FILE__, array( $this, "activation" ) );
-    register_deactivation_hook( __FILE__, array( $this, "deactivation" ) );
+    register_activation_hook( __FILE__, array( $this, 'activation' ) );
+    register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
     //i18n
-    add_action('plugins_loaded', array( $this, "load_textdomain") );
+    add_action('plugins_loaded', array( $this, 'load_textdomain') );
 
   	//settings
-  	add_action( 'admin_init', array( $this, "register_settings" ) );
-  	add_action( 'admin_menu', array( $this, "settings_page" ) );
+  	add_action( 'admin_init', array( $this, 'register_settings' ) );
+  	add_action( 'admin_menu', array( $this, 'settings_page' ) );
 
   	//cookie handling
-  	add_action( 'admin_enqueue_scripts', array( $this, "load_admin_scripts" ) );
+  	add_action( 'admin_enqueue_scripts', array( $this, 'load_admin_scripts' ) );
 
     //cookie function
     add_action( 'wp_head', array( $this, 'render_script') );
@@ -152,6 +152,7 @@ class wk_ga {
    * Outputs the Google Analytics script if necessary
    *
    * @since 1.2
+   * @see https://developers.google.com/analytics/devguides/collection/analyticsjs/ip-anonymization
    *
    */
   function google_analytics_script() {
@@ -159,6 +160,7 @@ class wk_ga {
       $GA_TRACKING_CODE = get_option('ga_tracking_code');
       $ANONYMIZE_IP     = get_option('ga_anonymize_ip');
       ?>
+
       <script>
       if( !hasWKGoogleAnalyticsCookie() ) {
         //Google Analytics
@@ -167,17 +169,19 @@ class wk_ga {
   			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   			})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
     		ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
-        <?php
-          if( $ANONYMIZE_IP ) :
-        ?>
-          //anonymize IP
-          ga('set', 'anonymizeIp', true);
-        <?php
-          endif;
-        ?>
+
+          <?php
+            if( $ANONYMIZE_IP ) :
+          ?>
+            ga('set', 'anonymizeIp', true);
+          <?php
+            endif;
+          ?>
+
         ga('send', 'pageview');
       }
       </script>
+      
         <?php
     }
   }
@@ -313,7 +317,7 @@ class wk_ga {
 	}
 
   /**
-   * Renders the
+   * Renders the header text for the settings page
    *
    * @since 1.6.2
    *
@@ -327,6 +331,7 @@ class wk_ga {
   }
 
   /**
+   * Renders text input for the Google Analytics tracking code
    *
    * @since 1.6.2
    *
@@ -344,6 +349,7 @@ class wk_ga {
   }
 
   /**
+   * Renders checkbox for the anonymize IP's option
    *
    * @since 1.6.2
    *
@@ -362,6 +368,7 @@ class wk_ga {
   }
 
   /**
+   * Renders checkbox for the track logged in users option
    *
    * @since 1.6.2
    *
@@ -380,6 +387,7 @@ class wk_ga {
   }
 
   /**
+   * Renders checkbox for the use tag manager option
    *
    * @since 1.6.2
    *
@@ -398,6 +406,7 @@ class wk_ga {
   }
 
   /**
+   * Renders text field for the Google Tag Manager ID
    *
    * @since 1.6.2
    *
@@ -420,6 +429,7 @@ class wk_ga {
    *
    * @since 1.0
    * @see https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
+   * @see https://github.com/js-cookie/js-cookie
    *
 	 */
 	function load_admin_scripts( $hook ) {
@@ -453,7 +463,7 @@ class wk_ga {
    *
    */
   function settings_page() {
-      add_options_page(
+    add_options_page(
       'Google Analytics',
       'Google Analytics',
       'manage_options',
