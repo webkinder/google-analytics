@@ -5,11 +5,11 @@ Plugin URI:  https://wordpress.org/plugins/wk-google-analytics/
 Description: Google Analytics for WordPress without tracking your own visits
 Version:     1.6.2
 Author:      WebKinder
-Author URI:  http://www.webkinder.ch
+Author URI:  https://www.webkinder.ch
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Domain Path: /lang
-Text Domain: wk-ga
+Text Domain: wk-google-analytics
 */
 
 class wk_ga {
@@ -75,7 +75,7 @@ class wk_ga {
    */
   function additional_admin_action_links( $links ) {
 
-    return array_merge( array('settings' => '<a href="' . admin_url( '/options-general.php?page=google_analytics' ) . '">' . __( 'Settings', 'wk-ga' ) . '</a>'),  $links );
+    return array_merge( array('settings' => '<a href="' . admin_url( '/options-general.php?page=google_analytics' ) . '">' . __( 'Settings', 'wk-google-analytics' ) . '</a>'),  $links );
 
   }
 
@@ -193,7 +193,7 @@ class wk_ga {
    *
    */
 	function load_textdomain() {
-		load_plugin_textdomain( 'wk-ga', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
+		load_plugin_textdomain( 'wk-google-analytics', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
 	}
 
   /**
@@ -260,7 +260,7 @@ class wk_ga {
 
     add_settings_field(
       'ga_anonymize_ip',
-      __('Anonymize IP"s', 'wk-ga'),
+      __('Anonymize IP"s', 'wk-google-analytics'),
       array( $this, 'anonymize_ip_field' ),
       'google_analytics',
       'google_analytics'
@@ -276,7 +276,7 @@ class wk_ga {
 
     add_settings_field(
       'track_logged_in',
-      __('Track logged in users', 'wk-ga'),
+      __('Track logged in users', 'wk-google-analytics'),
       array( $this, 'track_logged_in_field' ),
       'google_analytics',
       'google_analytics'
@@ -292,7 +292,7 @@ class wk_ga {
 
     add_settings_field(
       'ga_use_tag_manager',
-      __('Use Google Tag Manager instead', 'wk-ga'),
+      __('Use Google Tag Manager instead', 'wk-google-analytics'),
       array( $this, 'use_tag_manager_field' ),
       'google_analytics',
       'google_analytics'
@@ -308,7 +308,7 @@ class wk_ga {
 
     add_settings_field(
       'ga_tag_manager_id',
-      __('Google Tag Manager ID', 'wk-ga'),
+      __('Google Tag Manager ID', 'wk-google-analytics'),
       array( $this, 'tag_manager_id_field' ),
       'google_analytics',
       'google_analytics'
@@ -325,7 +325,7 @@ class wk_ga {
   function settings_header() {
     ?>
 
-    <p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-ga'); ?></p>
+    <p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-google-analytics'); ?></p>
 
     <?php
   }
@@ -448,7 +448,7 @@ class wk_ga {
 
 		//translate JavaScript
 		$translation_array = array(
-			'TrackText' => __('Do not track any visits from this device.','wk-ga')
+			'TrackText' => __('Do not track any visits from this device.','wk-google-analytics')
 		);
 		wp_localize_script('wk-ga-admin-js', 'text_content', $translation_array );
 		wp_enqueue_script('wk-ga-admin-js');
@@ -490,7 +490,7 @@ class wk_ga {
   	<?php if ( false !== $_REQUEST['settings-updated'] ) : ?>
       <div class="updated fade">
         <p>
-          <strong><a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php _e( 'Test your tracking code now!', 'wk-ga' ); ?></a></strong>
+          <strong><a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php _e( 'Test your tracking code now!', 'wk-google-analytics' ); ?></a></strong>
         </p>
       </div>
     <?php endif; ?>
