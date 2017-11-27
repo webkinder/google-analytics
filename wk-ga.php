@@ -13,6 +13,11 @@ Text Domain: wk-google-analytics
 */
 
 class wk_ga {
+  
+  // Minimal versions to run the plugin
+  const MIN_VERSION_PHP = '5.3';
+  const MIN_VERSION_WP = '4.8';
+  
   public function __construct() {
 
     //lifecycle hooks
@@ -203,7 +208,17 @@ class wk_ga {
    *
    */
   function activation() {
-
+    
+    if (version_compare(PHP_VERSION, self::MIN_VERSION_PHP, '<')) {
+      deactivate_plugins( plugin_basename(__FILE__) );
+      wp_die(__('This Plugin needs PHP version ' . self::MIN_VERSION_PHP . ' to run.', 'wk-google-analytics'));
+    }
+    
+    if (version_compare(get_bloginfo('version'), self::MIN_VERSION_WP, '<')) {
+      deactivate_plugins( plugin_basename(__FILE__) );
+      wp_die(__('This Plugin needs WordPress version ' . self::MIN_VERSION_WP . ' to run.', 'wk-google-analytics'));
+    }
+    
   }
 
   /**
