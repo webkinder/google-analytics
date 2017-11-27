@@ -59,7 +59,7 @@ class wk_ga {
     $base = plugin_basename(__FILE__);
 
     if ($file == $base) {
-      $links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-ga') . '</a>';
+      $links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-google-analytics') . '</a>';
     }
 
     return $links;
@@ -229,7 +229,7 @@ class wk_ga {
 
     add_settings_section(
       'google_analytics',
-      __('Google Analytics', 'wk-ga'),
+      __('Google Analytics', 'wk-google-analytics'),
       array( $this, 'settings_header'),
       'google_analytics'
     );
