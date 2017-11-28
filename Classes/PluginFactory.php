@@ -2,6 +2,8 @@
 
 namespace WebKinder\GoogleAnalytics;
 
+include_once 'Plugin.php';
+
 final class PluginFactory
 {
     

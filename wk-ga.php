@@ -16,7 +16,6 @@ Text Domain: wk-google-analytics
 define('WK_GOOGLE_ANALYTICS_DIR', dirname(__FILE__));
 
 include_once 'Classes/PluginFactory.php';
-include_once 'Classes/Plugin.php';
 
 // If EnvironmentChecks fails dont run
 if (WebKinder\GoogleAnalytics\PluginFactory::create() !== null) {
