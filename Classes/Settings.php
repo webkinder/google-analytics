@@ -12,13 +12,15 @@ class Settings {
    *
    */
   function settings_page() {
-    add_options_page(
-      'Google Analytics',
-      'Google Analytics',
-      'manage_options',
-      'google_analytics',
-      array( $this, "settings_content" )
-    );
+    if (!apply_filters('wk_google_analytics_dev_mode', false)) {
+      add_options_page(
+        'Google Analytics',
+        'Google Analytics',
+        'manage_options',
+        'google_analytics',
+        array( $this, "settings_content" )
+      );
+    }
   }
   
   
