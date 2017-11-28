@@ -54,7 +54,7 @@ class Settings {
       </form>
     </div>
       <div class="wk-right-part">
-        <?php include_once( __DIR__ . "/../includes/mailchimp-form.php" ); ?>
+        <?php include_once( WK_GOOGLE_ANALYTICS_DIR . "/includes/mailchimp-form.php" ); ?>
       </div>
     </div>
 

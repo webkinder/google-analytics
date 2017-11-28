@@ -31,8 +31,31 @@ class Plugin {
     //Google Tag Manager noscript footer
     add_action( 'wp_footer', array( $this->loader, 'google_tag_manager_noscript'));
 
+
+    //additional links to admin plugin page
+    add_filter( 'plugin_row_meta', array( $this, 'additional_admin_information_links' ), 10, 2);
+    add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'additional_admin_action_links' ) );
+
   }
 
+
+  /**
+   * Adds custom links to wk-google-analytics on admin plugin screen on the RIGHT
+   *
+   * @since 1.6.2
+   * @see https://codex.wordpress.org/Plugin_API/Filter_Reference/plugin_row_meta
+   *
+   */
+  function additional_admin_information_links( $links, $file ) {
+    
+    if (dirname($file) == basename(WK_GOOGLE_ANALYTICS_DIR)) {
+      $links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-google-analytics') . '</a>';
+    }
+    
+    return $links;
+    
+  }
+  
 
   /**
    * Sets up the translations in /lang directory
