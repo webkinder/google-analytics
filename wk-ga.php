@@ -13,6 +13,7 @@ Text Domain: wk-google-analytics
 */
 
 class wk_ga {
+  
   public function __construct() {
 
     //lifecycle hooks
@@ -203,7 +204,17 @@ class wk_ga {
    *
    */
   function activation() {
-
+    
+    if (version_compare(PHP_VERSION, '5.3', '<')) {
+      deactivate_plugins( plugin_basename(__FILE__) );
+      wp_die(__('This Plugin needs PHP version 5.3 to run.', 'wk-google-analytics'));
+    }
+    
+    if (version_compare(get_bloginfo('version'), '4.8', '<')) {
+      deactivate_plugins( plugin_basename(__FILE__) );
+      wp_die(__('This Plugin needs WordPress version 4.8 to run.', 'wk-google-analytics'));
+    }
+    
   }
 
   /**
