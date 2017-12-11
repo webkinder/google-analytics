@@ -11,4 +11,20 @@
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 		</testsuite>
 	</testsuites>
+	<php>
+		<ini name="display_errors" value="On" />
+		<ini name="display_startup_errors" value="On" />
+	</php>
+	<filter>
+		<whitelist processUncoveredFilesFromWhitelist="true">
+			<directory suffix=".php">./Classes</directory>
+			<exclude>
+				<file>./admin/mailchimp-form.php</file>
+			</exclude>
+			<file>./wk-ga.php</file>
+		</whitelist>
+	</filter>
+	<logging>
+		<log type="coverage-html" target="coverage-report" lowUpperBound="20" highLowerBound="40"/>
+	</logging>
 </phpunit>
