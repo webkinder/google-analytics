@@ -1,0 +1,14 @@
+.gitattributes export-ignore
+.gitignore export-ignore
+.sass-lint.yml export-ignore
+.editorconfig export-ignore
+bump-version.sh export-ignore
+gulpfile.js export-ignore
+package.json export-ignore
+package-lock.json export-ignore
+README.md export-ignore
+phpcs.ruleset.xml export-ignore
+phpunit.xml.dist export-ignore
+tests export-ignore
+bin export-ignore
+circle.yml export-ignore
