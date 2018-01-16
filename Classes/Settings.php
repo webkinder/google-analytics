@@ -83,13 +83,10 @@ class Settings {
       'google_analytics'
     );
 
-    /**
-     * @since 1.0
-     */
-    register_setting(
-      'wk_ga_google_analytics',
-      'ga_tracking_code'
-    );
+     register_setting(
+       'wk_ga_google_analytics',
+       'wk_google_analytics'
+     );
 
     add_settings_field(
       'ga_tracking_code',
@@ -97,14 +94,6 @@ class Settings {
       array( $this, 'tracking_code_field' ),
       'google_analytics',
       'google_analytics'
-    );
-
-    /**
-     * @since 1.0
-     */
-    register_setting(
-      'wk_ga_google_analytics',
-      'track_logged_in'
     );
 
     add_settings_field(
@@ -115,14 +104,6 @@ class Settings {
       'google_analytics'
     );
 
-    /**
-     * @since 1.1
-     */
-    register_setting(
-      'wk_ga_google_analytics',
-      'ga_anonymize_ip'
-    );
-
     add_settings_field(
       'track_logged_in',
       __('Track logged in users', 'wk-google-analytics'),
@@ -131,28 +112,12 @@ class Settings {
       'google_analytics'
     );
 
-    /**
-     * @since 1.2
-     */
-    register_setting(
-      'wk_ga_google_analytics',
-      'ga_use_tag_manager'
-    );
-
     add_settings_field(
       'ga_use_tag_manager',
       __('Use Google Tag Manager instead', 'wk-google-analytics'),
       array( $this, 'use_tag_manager_field' ),
       'google_analytics',
       'google_analytics'
-    );
-
-    /**
-     * @since 1.2
-     */
-    register_setting(
-      'wk_ga_google_analytics',
-      'ga_tag_manager_id'
     );
 
     add_settings_field(
@@ -189,11 +154,11 @@ class Settings {
   function tracking_code_field() {
 
     $field = 'ga_tracking_code';
-    $value = esc_attr( get_option( $field ) );
+    $value =  get_option('wk_google_analytics')[$field];
 
     ?>
 
-    <input type="text" name="<?php echo $field; ?>" placeholder="UA-XXXXXXXX-X" value="<?php echo $value; ?>" />
+    <input type="text" name="wk_google_analytics[<?php echo $field; ?>]" placeholder="UA-XXXXXXXX-X" value="<?php echo $value; ?>" />
 
     <?php
   }
@@ -207,11 +172,11 @@ class Settings {
   function anonymize_ip_field() {
 
     $field = 'ga_anonymize_ip';
-    $value = get_option( $field );
+    $value = get_option('wk_google_analytics')[$field];
 
     ?>
 
-    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+    <input type="checkbox" name="wk_google_analytics[<?php echo $field; ?>]" value="1" <?php checked( $value ); ?> />
 
     <?php
 
@@ -226,11 +191,11 @@ class Settings {
   function track_logged_in_field() {
 
     $field = 'track_logged_in';
-    $value = get_option( $field );
+    $value = get_option('wk_google_analytics')[$field];
 
     ?>
 
-    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+    <input type="checkbox" name="wk_google_analytics[<?php echo $field; ?>]" value="1" <?php checked( $value ); ?> />
 
     <?php
 
@@ -245,11 +210,11 @@ class Settings {
   function use_tag_manager_field() {
 
     $field = 'ga_use_tag_manager';
-    $value = get_option( $field );
+    $value = get_option('wk_google_analytics')[$field];
 
     ?>
 
-    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+    <input type="checkbox" name="wk_google_analytics[<?php echo $field; ?>]" value="1" <?php checked( $value ); ?> />
 
     <?php
 
@@ -264,11 +229,11 @@ class Settings {
   function tag_manager_id_field() {
 
     $field = 'ga_tag_manager_id';
-    $value = esc_attr( get_option( $field ) );
+    $value = get_option('wk_google_analytics')[$field];
 
     ?>
 
-    <input type="text" name="<?php echo $field; ?>" placeholder="GTM-XXXXXX" value="<?php echo $value; ?>" />
+    <input type="text" name="wk_google_analytics[<?php echo $field; ?>]" placeholder="GTM-XXXXXX" value="<?php echo $value; ?>" />
 
     <?php
 
