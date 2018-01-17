@@ -115,7 +115,6 @@ class Loader {
     }
   }
   
-  
   /**
    * Gets options from filter if dev-mode is enabled
    *

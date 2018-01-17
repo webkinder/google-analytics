@@ -19,5 +19,5 @@ include_once 'Classes/PluginFactory.php';
 
 // If EnvironmentChecks fails dont run
 if (WebKinder\GoogleAnalytics\PluginFactory::create() !== null) {
-    (WebKinder\GoogleAnalytics\PluginFactory::create())->run();
+    WebKinder\GoogleAnalytics\PluginFactory::create()->run();
 }
