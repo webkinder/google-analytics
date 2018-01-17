@@ -22,20 +22,29 @@ class LoaderTest extends WP_UnitTestCase {
 		// Logged out should always be tracked
 		wp_logout();
 
-		update_option('track_logged_in', 1);
+		$settings = get_option('wk_google_analytics');
+		$settings['track_logged_in'] = 1;
+		update_option('wk_google_analytics', $settings);
 		$this->assertTrue($this->plugin->loader->should_track_visit());
 
-		update_option('track_logged_in', 0);
+
+		$settings = get_option('wk_google_analytics');
+		$settings['track_logged_in'] = 0;
+		update_option('wk_google_analytics', $settings);
 		$this->assertTrue($this->plugin->loader->should_track_visit());
 
 		// Logged in should only be tracked when option is set
 		$user_id = $this->factory->user->create();
 		wp_set_current_user( $user_id );
 
-		update_option('track_logged_in', 1);
+		$settings = get_option('wk_google_analytics');
+		$settings['track_logged_in'] = 1;
+		update_option('wk_google_analytics', $settings);
 		$this->assertTrue($this->plugin->loader->should_track_visit());
 
-		update_option('track_logged_in', 0);
+		$settings = get_option('wk_google_analytics');
+		$settings['track_logged_in'] = 0;
+		update_option('wk_google_analytics', $settings);
 		$this->assertFalse($this->plugin->loader->should_track_visit());
 	}
 }
