@@ -3,7 +3,7 @@
 namespace WebKinder\GoogleAnalytics;
 
 class Settings {
-  
+
   /**
    * Add an options page under 'Settings'
    *
@@ -22,8 +22,8 @@ class Settings {
       );
     }
   }
-  
-  
+
+
   /**
    * Ouputs the markup for the options page
    *
@@ -63,8 +63,8 @@ class Settings {
   <?php
 
   }
-  
-  
+
+
   /**
    * Registers all the settings separately
    *
@@ -88,49 +88,49 @@ class Settings {
        'wk_google_analytics'
      );
 
-    add_settings_field(
-      'ga_tracking_code',
-      __('GA Tracking Code', 'wk-ga'),
-      array( $this, 'tracking_code_field' ),
-      'google_analytics',
-      'google_analytics'
-    );
+			add_settings_field(
+				'tracking_code',
+				__('GA Tracking Code', 'wk-google-analytics'),
+				array( $this, 'tracking_code_field' ),
+				'google_analytics',
+				'google_analytics'
+			);
 
-    add_settings_field(
-      'ga_anonymize_ip',
-      __('Anonymize IP"s', 'wk-google-analytics'),
-      array( $this, 'anonymize_ip_field' ),
-      'google_analytics',
-      'google_analytics'
-    );
+			add_settings_field(
+				'anonymize_ip',
+				__('Anonymize IP"s', 'wk-google-analytics'),
+				array( $this, 'anonymize_ip_field' ),
+				'google_analytics',
+				'google_analytics'
+			);
 
-    add_settings_field(
-      'track_logged_in',
-      __('Track logged in users', 'wk-google-analytics'),
-      array( $this, 'track_logged_in_field' ),
-      'google_analytics',
-      'google_analytics'
-    );
+			add_settings_field(
+				'track_logged_in',
+				__('Track logged in users', 'wk-google-analytics'),
+				array( $this, 'track_logged_in_field' ),
+				'google_analytics',
+				'google_analytics'
+			);
 
-    add_settings_field(
-      'ga_use_tag_manager',
-      __('Use Google Tag Manager instead', 'wk-google-analytics'),
-      array( $this, 'use_tag_manager_field' ),
-      'google_analytics',
-      'google_analytics'
-    );
+			add_settings_field(
+				'use_tag_manager',
+				__('Use Google Tag Manager instead', 'wk-google-analytics'),
+				array( $this, 'use_tag_manager_field' ),
+				'google_analytics',
+				'google_analytics'
+			);
 
-    add_settings_field(
-      'ga_tag_manager_id',
-      __('Google Tag Manager ID', 'wk-google-analytics'),
-      array( $this, 'tag_manager_id_field' ),
-      'google_analytics',
-      'google_analytics'
-    );
+			add_settings_field(
+				'tag_manager_id',
+				__('Google Tag Manager ID', 'wk-google-analytics'),
+				array( $this, 'tag_manager_id_field' ),
+				'google_analytics',
+				'google_analytics'
+			);
 
   }
-  
-  
+
+
   /**
    * Renders the header text for the settings page
    *
@@ -138,10 +138,8 @@ class Settings {
    *
    */
   function settings_header() {
-    ?>
-
-    <p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-google-analytics'); ?></p>
-
+		?>
+			<p><?php _e('Enter your Google Analytics tracking code below. You can also use Google Tag Manager instead by checking the relevant setting.', 'wk-google-analytics'); ?></p>
     <?php
   }
 
@@ -153,9 +151,8 @@ class Settings {
    */
   function tracking_code_field() {
 
-    $field = 'ga_tracking_code';
-    $value =  get_option('wk_google_analytics')[$field];
-
+    $field = 'tracking_code';
+    $value =  $this->wk_get_option($field);
     ?>
 
     <input type="text" name="wk_google_analytics[<?php echo $field; ?>]" placeholder="UA-XXXXXXXX-X" value="<?php echo $value; ?>" />
@@ -171,8 +168,8 @@ class Settings {
    */
   function anonymize_ip_field() {
 
-    $field = 'ga_anonymize_ip';
-    $value = get_option('wk_google_analytics')[$field];
+    $field = 'anonymize_ip';
+    $value =  $this->wk_get_option($field);
 
     ?>
 
@@ -191,7 +188,7 @@ class Settings {
   function track_logged_in_field() {
 
     $field = 'track_logged_in';
-    $value = get_option('wk_google_analytics')[$field];
+    $value =  $this->wk_get_option($field);
 
     ?>
 
@@ -209,8 +206,8 @@ class Settings {
    */
   function use_tag_manager_field() {
 
-    $field = 'ga_use_tag_manager';
-    $value = get_option('wk_google_analytics')[$field];
+    $field = 'use_tag_manager';
+    $value =  $this->wk_get_option($field);
 
     ?>
 
@@ -228,8 +225,8 @@ class Settings {
    */
   function tag_manager_id_field() {
 
-    $field = 'ga_tag_manager_id';
-    $value = get_option('wk_google_analytics')[$field];
+    $field = 'tag_manager_id';
+    $value =  $this->wk_get_option($field);
 
     ?>
 
@@ -238,5 +235,27 @@ class Settings {
     <?php
 
   }
-  
+
+	/**
+	 * Gets options from filter if dev-mode is enabled
+	 *
+	 * @since 2.0
+	 *
+	 */
+	function wk_get_option($option) {
+
+		if (apply_filters('wk_google_analytics_dev_mode', false)) {
+			return apply_filters('wk_google_analytics_options', array(
+				'ga_tracking_code' => '',
+				'ga_anonymize_ip' => false,
+				'track_logged_in' => false,
+				'ga_use_tag_manager' => false,
+				'ga_tag_manager_id' => ''
+			));
+		} else {
+			return get_option( 'wk_google_analytics' )[$option];
+		}
+
+	}
+
 }

@@ -3,23 +3,27 @@
 namespace WebKinder\GoogleAnalytics;
 
 class Plugin {
-  
+
   public function run() {
 
+		add_action( 'plugins_loaded', array( $this, 'update_db_check' ) );
+
     //i18n
-    add_action('plugins_loaded', array( $this, 'load_textdomain') );
+    add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
 
   	//settings
     include_once 'Settings.php';
     $this->settings = new Settings();
-    
+
     add_action( 'admin_init', array( $this->settings, 'register_settings' ) );
     add_action( 'admin_menu', array( $this->settings, 'settings_page' ) );
 
     //loader
     include_once 'Loader.php';
-    $this->loader = new Loader();
-    
+    $this->loader = new Loader([
+			'settings' => $this->settings
+		]);
+
   	//cookie handling
   	add_action( 'admin_enqueue_scripts', array( $this->loader, 'load_admin_scripts' ) );
     //cookie function
@@ -38,6 +42,27 @@ class Plugin {
 
   }
 
+	function update_db_check() {
+	    if ( !get_site_option( 'wk_ga_db_version' ) || version_compare(get_site_option( 'wk_ga_db_version' ), '1.0.0', '<') ) {
+	    	$settings = [
+					'tracking_code' => (get_option('ga_tracking_code', null) !== null) ? get_option('ga_tracking_code') : '',
+					'anonymize_ip' => (get_option('ga_anonymize_ip', null) !== null) ? get_option('ga_anonymize_ip') : false,
+					'track_logged_in' => (get_option('track_logged_in', null) !== null) ? get_option('track_logged_in') : false,
+					'use_tag_manager' => (get_option('ga_use_tag_manager', null) !== null) ? get_option('ga_use_tag_manager') : false,
+					'tag_manager_id' => (get_option('ga_tag_manager_id', null) !== null) ? get_option('ga_tag_manager_id') : '',
+				];
+				update_option('wk_google_analytics', $settings);
+
+				delete_option('ga_tracking_code');
+				delete_option('ga_anonymize_ip');
+				delete_option('track_logged_in');
+				delete_option('ga_use_tag_manager');
+				delete_option('ga_tag_manager_id');
+
+				update_site_option('wk_ga_db_version', '1.0.0');
+	    }
+	}
+
 
   /**
    * Adds custom links to wk-google-analytics on admin plugin screen on the RIGHT
@@ -47,15 +72,15 @@ class Plugin {
    *
    */
   function additional_admin_information_links( $links, $file ) {
-    
+
     if (dirname($file) == basename(WK_GOOGLE_ANALYTICS_DIR)) {
       $links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-google-analytics') . '</a>';
     }
-    
+
     return $links;
-    
+
   }
-  
+
 
   /**
    * Sets up the translations in /lang directory

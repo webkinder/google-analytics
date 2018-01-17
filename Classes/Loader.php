@@ -3,7 +3,12 @@
 namespace WebKinder\GoogleAnalytics;
 
 class Loader {
-  
+
+	function __construct($dependencies) {
+		$this->settings = $dependencies['settings'];
+	}
+
+
   /**
    * Returns whether the current request should be tracked or not
    *
@@ -12,10 +17,10 @@ class Loader {
    *
    */
   function should_track_visit() {
-    return ( !is_user_logged_in() || $this->wk_get_option('track_logged_in') );
+    return ( !is_user_logged_in() || $this->settings->wk_get_option('track_logged_in') );
   }
-  
-  
+
+
   /**
    * Returns if the cookie is present
    *
@@ -41,8 +46,8 @@ class Loader {
    *
    */
   function google_tag_manager_script() {
-    if( $this->should_track_visit() && $this->wk_get_option('ga_use_tag_manager') ) {
-      $TAG_MANAGER_ID   = $this->wk_get_option('ga_tag_manager_id');
+    if( $this->should_track_visit() && $this->settings->wk_get_option('use_tag_manager') ) {
+      $TAG_MANAGER_ID   = $this->settings->wk_get_option('tag_manager_id');
       ?>
       <script>
         if( !hasWKGoogleAnalyticsCookie() ) {
@@ -66,8 +71,8 @@ class Loader {
    *
    */
   function google_tag_manager_noscript() {
-    if( $this->should_track_visit() && $this->wk_get_option('ga_use_tag_manager') ) {
-      $TAG_MANAGER_ID   = $this->wk_get_option('ga_tag_manager_id');
+    if( $this->should_track_visit() && $this->settings->wk_get_option('use_tag_manager') ) {
+      $TAG_MANAGER_ID   = $this->settings->wk_get_option('tag_manager_id');
       ?>
       <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -85,10 +90,11 @@ class Loader {
    *
    */
   function google_analytics_script() {
-    if( $this->should_track_visit() && ! $this->wk_get_option('ga_use_tag_manager') ) {
-      $GA_TRACKING_CODE = $this->wk_get_option('ga_tracking_code');
-      $ANONYMIZE_IP     = $this->wk_get_option('ga_anonymize_ip');
-      ?>
+    if( $this->should_track_visit() && ! $this->settings->wk_get_option('use_tag_manager') ) {
+      $GA_TRACKING_CODE = $this->settings->wk_get_option('tracking_code');
+      $ANONYMIZE_IP     = $this->settings->wk_get_option('anonymize_ip');
+
+			?>
 
       <script>
       if( !hasWKGoogleAnalyticsCookie() ) {
@@ -110,31 +116,9 @@ class Loader {
         ga('send', 'pageview');
       }
       </script>
-      
+
         <?php
     }
-  }
-  
-  /**
-   * Gets options from filter if dev-mode is enabled
-   *
-   * @since 2.0
-   *
-   */
-  function wk_get_option($option) {
-    
-    if (apply_filters('wk_google_analytics_dev_mode', false)) {
-      return apply_filters('wk_google_analytics_options', array(
-        'ga_tracking_code' => '',
-        'ga_anonymize_ip' => false,
-        'track_logged_in' => false,
-        'ga_use_tag_manager' => false,
-        'ga_tag_manager_id' => ''
-      ));
-    } else {
-      return get_option($option);
-    }
-    
   }
 
 
@@ -168,5 +152,5 @@ class Loader {
     wp_enqueue_script('wk-ga-admin-js');
 
   }
-  
+
 }
