@@ -12,7 +12,7 @@ class Loader {
    *
    */
   function should_track_visit() {
-    return ( !is_user_logged_in() || wk_get_option('track_logged_in') );
+    return ( !is_user_logged_in() || $this->wk_get_option('track_logged_in') );
   }
   
   
@@ -41,8 +41,8 @@ class Loader {
    *
    */
   function google_tag_manager_script() {
-    if( $this->should_track_visit() && wk_get_option('ga_use_tag_manager') ) {
-      $TAG_MANAGER_ID   = wk_get_option('ga_tag_manager_id');
+    if( $this->should_track_visit() && $this->wk_get_option('ga_use_tag_manager') ) {
+      $TAG_MANAGER_ID   = $this->wk_get_option('ga_tag_manager_id');
       ?>
       <script>
         if( !hasWKGoogleAnalyticsCookie() ) {
@@ -66,8 +66,8 @@ class Loader {
    *
    */
   function google_tag_manager_noscript() {
-    if( $this->should_track_visit() && wk_get_option('ga_use_tag_manager') ) {
-      $TAG_MANAGER_ID   = wk_get_option('ga_tag_manager_id');
+    if( $this->should_track_visit() && $this->wk_get_option('ga_use_tag_manager') ) {
+      $TAG_MANAGER_ID   = $this->wk_get_option('ga_tag_manager_id');
       ?>
       <noscript><iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -85,9 +85,9 @@ class Loader {
    *
    */
   function google_analytics_script() {
-    if( $this->should_track_visit() && ! wk_get_option('ga_use_tag_manager') ) {
-      $GA_TRACKING_CODE = wk_get_option('ga_tracking_code');
-      $ANONYMIZE_IP     = wk_get_option('ga_anonymize_ip');
+    if( $this->should_track_visit() && ! $this->wk_get_option('ga_use_tag_manager') ) {
+      $GA_TRACKING_CODE = $this->wk_get_option('ga_tracking_code');
+      $ANONYMIZE_IP     = $this->wk_get_option('ga_anonymize_ip');
       ?>
 
       <script>
