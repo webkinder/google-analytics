@@ -43,7 +43,7 @@ class Plugin {
   }
 
 	function update_db_check() {
-	    if ( !get_site_option( 'wk_ga_db_version' ) || version_compare(get_site_option( 'wk_ga_db_version' ), '1.0.0', '<') ) {
+	    if ( !get_site_option( 'wk_ga_db_version' ) || version_compare(get_site_option( 'wk_ga_db_version' ), '1.6.2', '<') ) {
 	    	$settings = [
 					'tracking_code' => (get_option('ga_tracking_code', null) !== null) ? get_option('ga_tracking_code') : '',
 					'anonymize_ip' => (get_option('ga_anonymize_ip', null) !== null) ? get_option('ga_anonymize_ip') : false,
@@ -59,7 +59,7 @@ class Plugin {
 				delete_option('ga_use_tag_manager');
 				delete_option('ga_tag_manager_id');
 
-				update_site_option('wk_ga_db_version', '1.0.0');
+				update_site_option('wk_ga_db_version', '1.6.2');
 	    }
 	}
 
