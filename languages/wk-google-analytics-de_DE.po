@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-24 16:34+0200\n"
-"PO-Revision-Date: 2018-05-24 17:01+0200\n"
+"POT-Creation-Date: 2018-05-24 17:27+0200\n"
+"PO-Revision-Date: 2018-05-24 17:27+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -21,11 +21,11 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
 
-#: Classes/Loader.php:143
+#: Classes/Loader.php:129
 msgid "Do not track any visits from this device."
 msgstr "Keine Besuche von diesem Gerät tracken."
 
-#: Classes/Plugin.php:53
+#: Classes/Plugin.php:59
 msgid "Donate to this plugin"
 msgstr "Erfahre das Wichtigste über jedes Update"
 
@@ -65,6 +65,10 @@ msgstr ""
 "Gib deinen Google Analytics Tracking Code unten ein. Alternativ kann auch "
 "Google Tag Manager verwendet werden, indem das entsprechende Setting gesetzt "
 "wird."
+
+#: Classes/Settings.php:215
+msgid "This setting is only for Google Analytics."
+msgstr "Diese Einstellung funktioniert zurzeit nur mit Google Analytics."
 
 #: Config/EnvironmentChecksConfig.php:6
 msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
