@@ -3,7 +3,7 @@
 namespace WebKinder\GoogleAnalytics;
 
 class Settings {
-  
+
   /**
    * Add an options page under 'Settings'
    *
@@ -20,8 +20,8 @@ class Settings {
       array( $this, "settings_content" )
     );
   }
-  
-  
+
+
   /**
    * Ouputs the markup for the options page
    *
@@ -61,8 +61,8 @@ class Settings {
   <?php
 
   }
-  
-  
+
+
   /**
    * Registers all the settings separately
    *
@@ -162,8 +162,8 @@ class Settings {
     );
 
   }
-  
-  
+
+
   /**
    * Renders the header text for the settings page
    *
@@ -206,6 +206,7 @@ class Settings {
 
     $field = 'ga_anonymize_ip';
     $value = get_option( $field );
+    $value = $value ? $value : true;
 
     ?>
 
@@ -284,5 +285,4 @@ class Settings {
     <?php
 
   }
-  
 }
