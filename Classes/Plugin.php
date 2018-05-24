@@ -9,6 +9,10 @@ class Plugin {
     //i18n
     add_action('plugins_loaded', array( $this, 'load_textdomain') );
 
+	//opt-out button
+	include_once 'OptOutButton.php';
+	OptOutButton::init();
+
   	//settings
     include_once 'Settings.php';
     $this->settings = new Settings();
@@ -21,7 +25,8 @@ class Plugin {
     $this->loader = new Loader();
 
   	//cookie handling
-  	add_action( 'admin_enqueue_scripts', array( $this->loader, 'load_admin_scripts' ) );
+  	add_action( 'admin_enqueue_scripts', array( $this->loader, 'load_admin_styles' ) );
+  	add_action( 'wp_enqueue_scripts', array( $this->loader, 'register_public_scripts' ) );
     //cookie function
     add_action( 'wp_head', array( $this->loader, 'render_script') );
     //Google Analytics script in <head>

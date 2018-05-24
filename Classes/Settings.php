@@ -49,7 +49,7 @@ class Settings {
       <form id="wk-google-analytics-settings" method="post" action="options.php">
         <?php settings_fields( 'wk_ga_google_analytics' ); ?>
         <?php do_settings_sections('google_analytics'); ?>
-        <div id="track-device"></div>
+		<?php echo do_shortcode('[google_analytics_opt_out]'); ?>
         <?php submit_button(); ?>
       </form>
     </div>
@@ -210,7 +210,20 @@ class Settings {
 
     ?>
 
-    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+	<div class="anonymize-ip-tooltip">
+		<input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+		<span class="tooltip-text">This setting is only for Google Analytics.</span>
+	</div>
+
+	<style>
+		.anonymize-ip-tooltip:hover .tooltip-text {
+			display: inline-block;
+		}
+
+		.anonymize-ip-tooltip .tooltip-text {
+			display: none;
+		}
+	</style>
 
     <?php
 
@@ -272,5 +285,4 @@ class Settings {
     <?php
 
   }
-
 }
