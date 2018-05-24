@@ -209,7 +209,20 @@ class Settings {
 
     ?>
 
-    <input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+	<div class="anonymize-ip-tooltip">
+		<input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
+		<span class="tooltip-text">This setting is only for Google Analytics.</span>
+	</div>
+
+	<style>
+		.anonymize-ip-tooltip:hover .tooltip-text {
+			display: inline-block;
+		}
+
+		.anonymize-ip-tooltip .tooltip-text {
+			display: none;
+		}
+	</style>
 
     <?php
 
