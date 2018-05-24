@@ -53,8 +53,7 @@ class Loader {
           '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','<?php echo $TAG_MANAGER_ID; ?>');
         }
-      </script>
-      <?php
+      </script> <?php
     }
   }
 
@@ -115,25 +114,12 @@ class Loader {
     }
   }
 
-
   /**
-   * Loads all the admin scripts for settings page
-   *
-   * @since 1.0
-   * @see https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
-   * @see https://github.com/js-cookie/js-cookie
-   *
+   * Registers cookie scripts for opt out shortcode
    */
-  function load_admin_scripts( $hook ) {
-    if( $hook != "settings_page_google_analytics" ) {
-      return;
-    }
-
-    //admin styles
-    wp_enqueue_style( 'custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/css/admin-styles.css' );
-
+  function register_public_scripts() {
     //cookie library
-    wp_enqueue_script( 'cookie-js', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/js/js.cookie.js' );
+    wp_register_script( 'cookie-js', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/js/js.cookie.js' );
 
     //admin js for cookies
     wp_register_script( 'wk-ga-admin-js', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/js/admin-functions.js', array('jquery', 'cookie-js') );
@@ -143,7 +129,25 @@ class Loader {
       'TrackText' => __('Do not track any visits from this device.','wk-google-analytics')
     );
     wp_localize_script('wk-ga-admin-js', 'text_content', $translation_array );
-    wp_enqueue_script('wk-ga-admin-js');
+  }
+
+
+  /**
+   * Loads all the admin scripts for settings page
+   *
+   * @since 1.0
+   * @see https://codex.wordpress.org/Plugin_API/Action_Reference/admin_enqueue_scripts
+   * @see https://github.com/js-cookie/js-cookie
+   *
+   */
+  function load_admin_styles( $hook ) {
+
+    if( $hook != "settings_page_google_analytics" ) {
+      return;
+    }
+
+    //admin styles
+    wp_enqueue_style( 'custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/css/admin-styles.css' );
 
   }
   

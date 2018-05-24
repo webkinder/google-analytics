@@ -49,7 +49,7 @@ class Settings {
       <form id="wk-google-analytics-settings" method="post" action="options.php">
         <?php settings_fields( 'wk_ga_google_analytics' ); ?>
         <?php do_settings_sections('google_analytics'); ?>
-        <div id="track-device"></div>
+		<?php echo do_shortcode('[google_analytics_opt_out]'); ?>
         <?php submit_button(); ?>
       </form>
     </div>
