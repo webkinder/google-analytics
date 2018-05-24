@@ -37,6 +37,7 @@ class Plugin {
     add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'additional_admin_action_links' ) );
 
     add_action( 'admin_init', array($this, 'add_privacy_policy_content') );
+    add_filter( 'wp_get_default_privacy_policy_content' , array( $this, 'add_privacy_policy_default_text') );
   }
 
 
@@ -65,7 +66,7 @@ class Plugin {
    *
    */
 	function load_textdomain() {
-		load_plugin_textdomain( 'wk-google-analytics', false, plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/lang/' );
+		load_plugin_textdomain( 'wk-google-analytics', false, basename( plugin_dir_path( __DIR__ ) )  . '/languages' );
 	}
 
 	/**
@@ -75,8 +76,27 @@ class Plugin {
 		if( !function_exists( 'wp_add_privacy_policy_content' ) ) {
 			return;
 		}
-		$content = wpautop( __( 'Your google analytics content here', 'wk-google-analytics' ) );
-		wp_add_privacy_policy_content( 'Google Analytics', $content );
+		wp_add_privacy_policy_content( 'Google Analytics', self::get_ga_policy_text() );
 	}
 
+	/**
+	 * Add GA Text to default text
+	 * @param $content
+	 * @return string
+	 */
+	function add_privacy_policy_default_text($content) {
+		$content .= self::get_ga_policy_text();
+		return $content;
+	}
+
+	/**
+	 * Get the text for GA
+	 * @return string
+	 */
+	static function get_ga_policy_text() {
+		ob_start();
+		include WK_GOOGLE_ANALYTICS_DIR . '/Content/privacy_policy.php';
+		$content = ob_get_clean();
+		return $content;
+	}
 }
