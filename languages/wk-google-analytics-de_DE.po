@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-28 14:26+0200\n"
-"PO-Revision-Date: 2018-05-28 14:29+0200\n"
+"POT-Creation-Date: 2018-05-28 15:36+0200\n"
+"PO-Revision-Date: 2018-05-28 15:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -211,7 +211,19 @@ msgstr "Vorname"
 msgid "Last Name"
 msgstr "Nachname"
 
-#: includes/mailchimp-form.php:30
+#: includes/mailchimp-form.php:25
+msgid "Marketing permission"
+msgstr ""
+
+#: includes/mailchimp-form.php:26
+msgid ""
+"I agree to my personal data being stored, used for distribution and to "
+"receive plugin news."
+msgstr ""
+"Ich erkläre mich bereit, das Personenbezogene Daten gespeichert, zur "
+"Distribution sowie für den Versand von Plugin-Neuigkeiten genutzt werden."
+
+#: includes/mailchimp-form.php:33
 msgid "Subscribe"
 msgstr "Abonnieren"
 

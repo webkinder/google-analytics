@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-28 14:30+0200\n"
-"PO-Revision-Date: 2018-05-28 14:30+0200\n"
+"POT-Creation-Date: 2018-05-28 15:35+0200\n"
+"PO-Revision-Date: 2018-05-28 15:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE@formal\n"
@@ -62,15 +62,18 @@ msgid ""
 "Enter your Google Analytics tracking code below. You can also use Google Tag "
 "Manager instead by checking the relevant setting."
 msgstr ""
-"Diese Einstellung gilt nur für Google Analytics. Falls Google Tag Manager "
-"genutzt wird, muss die Einstellung im Google Tag Manager Konto gesetzt "
-"werden."
+"Geben Sie Ihren Google Analytics Tracking Code unten ein. Alternativ kann "
+"auch Google Tag Manager verwendet werden, indem das entsprechende Setting "
+"gesetzt wird."
 
 #: Classes/Settings.php:215
 msgid ""
 "This setting is only for Google Analytics. If you use GTM please set this "
 "setting in your GTM account."
 msgstr ""
+"Diese Einstellung gilt nur für Google Analytics. Falls Google Tag Manager "
+"genutzt wird, muss die Einstellung im Google Tag Manager Konto gesetzt "
+"werden."
 
 #: Config/EnvironmentChecksConfig.php:6
 msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
@@ -208,7 +211,19 @@ msgstr ""
 msgid "Last Name"
 msgstr ""
 
-#: includes/mailchimp-form.php:30
+#: includes/mailchimp-form.php:25
+msgid "Marketing permission"
+msgstr ""
+
+#: includes/mailchimp-form.php:26
+msgid ""
+"I agree to my personal data being stored, used for distribution and to "
+"receive plugin news."
+msgstr ""
+"Ich erkläre mich bereit, das Personenbezogene Daten gespeichert, zur "
+"Distribution sowie für den Versand von Plugin-Neuigkeiten genutzt werden."
+
+#: includes/mailchimp-form.php:33
 msgid "Subscribe"
 msgstr ""
 
