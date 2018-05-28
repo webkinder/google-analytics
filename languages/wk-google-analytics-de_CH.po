@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-24 17:27+0200\n"
-"PO-Revision-Date: 2018-05-24 17:27+0200\n"
+"POT-Creation-Date: 2018-05-28 14:30+0200\n"
+"PO-Revision-Date: 2018-05-28 14:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -67,8 +67,13 @@ msgstr ""
 "wird."
 
 #: Classes/Settings.php:215
-msgid "This setting is only for Google Analytics."
-msgstr "Diese Einstellung funktioniert zurzeit nur mit Google Analytics."
+msgid ""
+"This setting is only for Google Analytics. If you use GTM please set this "
+"setting in your GTM account."
+msgstr ""
+"Diese Einstellung gilt nur für Google Analytics. Falls Google Tag Manager "
+"genutzt wird, muss die Einstellung im Google Tag Manager Konto gesetzt "
+"werden."
 
 #: Config/EnvironmentChecksConfig.php:6
 msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
@@ -229,6 +234,9 @@ msgstr ""
 #. Author URI of the plugin/theme
 msgid "https://www.webkinder.ch"
 msgstr ""
+
+#~ msgid "This setting is only for Google Analytics."
+#~ msgstr "Diese Einstellung funktioniert zurzeit nur mit Google Analytics."
 
 #~ msgid "Page visits from this device are not tracked."
 #~ msgstr "Seitenbesuche von diesem Gerät werden nicht getrackt."
