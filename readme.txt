@@ -35,7 +35,7 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 = 1.7.0 =
 * The "Anonymize IPs" field is now checked by default.
-* The Google Analytics tracking opt-out shortcode is automatically integrated on the new WordPress Privacy Policy page along with the Privacy Policy for the use of Google Analytics. This statement is currently available in English and German. You can use this shortcode on any page you wish your users can opt-out of Google Analytics tracking.
+* The Google Analytics tracking opt-out shortcode is automatically integrated on the new WordPress Privacy Policy page along with the Privacy Policy for the use of Google Analytics. This statement is currently available in English and German. You can use this shortcode on any page you wish,so your users can opt-out of Google Analytics tracking.
 * Updated newsletter inside the setting pages
 * Tested up to WordPress 4.9.6
 
