@@ -47,3 +47,7 @@
   margin-left: 5px;
   color: red;
 }
+
+#mc_embed_signup_scroll .input-group label {
+    width: 200px;
+}
