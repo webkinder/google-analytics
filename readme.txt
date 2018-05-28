@@ -3,8 +3,8 @@ Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 3.0
 Requires PHP: 5.3
-Tested up to: 4.9
-Stable tag: 1.6.2
+Tested up to: 4.9.6
+Stable tag: 1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,12 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.7 =
+* The "Anonymize IPs" field is now checked by default.
+* The Google Analytics tracking opt-out shortcode is automatically integrated on the new WordPress Privacy Policy page along with the Privacy Policy for the use of Google Analytics. This statement is currently available in English and German. You can use this shortcode on any page you wish your users can opt-out of Google Analytics tracking.
+* Updated newsletter inside the setting pages
+* Tested up to WordPress 4.9.6
 
 = 1.6.2 =
 * Refactored settings page for cleaner settings fields
