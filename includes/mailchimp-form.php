@@ -21,7 +21,10 @@
     <label for="mce-LNAME"><?php _e("Last Name", 'wk-google-analytics'); ?><span class="asterisk">*</span></label>
     <input type="text" value="" name="LNAME" class="required" id="mce-LNAME">
   </div>
-
+  <div class="mc-field-group input-group">
+      <strong><?php _e("Marketing permission", 'wk-google-analytics'); ?></strong>
+      <input type="checkbox" value="1" name="group[16549][1]" id="mce-group[16549]-16549-0"><label for="mce-group[16549]-16549-0"><?php _e("I agree to my personal data being stored, used for distribution and to receive plugin news.", 'wk-google-analytics'); ?></label>
+  </ul>
   <div id="mce-responses" class="clear">
     <div class="response" id="mce-error-response" style="display:none"></div>
     <div class="response" id="mce-success-response" style="display:none"></div>
