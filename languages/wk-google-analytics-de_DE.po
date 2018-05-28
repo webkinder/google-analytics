@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
 "POT-Creation-Date: 2018-05-28 15:36+0200\n"
-"PO-Revision-Date: 2018-05-28 15:36+0200\n"
+"PO-Revision-Date: 2018-05-28 15:39+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -213,7 +213,7 @@ msgstr "Nachname"
 
 #: includes/mailchimp-form.php:25
 msgid "Marketing permission"
-msgstr ""
+msgstr "Zustimmung"
 
 #: includes/mailchimp-form.php:26
 msgid ""
