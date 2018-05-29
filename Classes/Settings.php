@@ -206,11 +206,12 @@ class Settings {
 
     $field = 'ga_anonymize_ip';
     $value = get_option( $field );
-    $value = $value ? $value : true;
+    $value = ( $value !== false ) ? $value : true;
 
     ?>
 
 	<div class="anonymize-ip-tooltip">
+    <input type="checkbox" name="<?php echo $field; ?>" value="0" style="display:none;" checked>
 		<input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
 		<span class="tooltip-text"><?php echo __('This setting is only for Google Analytics. If you use GTM please set this setting in your GTM account.', 'wk-google-analytics'); ?></span>
 	</div>
