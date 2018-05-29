@@ -211,7 +211,7 @@ class Settings {
     ?>
 
 	<div class="anonymize-ip-tooltip">
-    <input type="checkbox" name="<?php echo $field; ?>" value="0" style="display:none;" checked>
+    <input type="hidden" name="<?php echo $field; ?>" value="0">
 		<input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked( $value ); ?> />
 		<span class="tooltip-text"><?php echo __('This setting is only for Google Analytics. If you use GTM please set this setting in your GTM account.', 'wk-google-analytics'); ?></span>
 	</div>

@@ -3,7 +3,7 @@
 namespace WebKinder\GoogleAnalytics;
 
 class Loader {
-  
+
   /**
    * Returns whether the current request should be tracked or not
    *
@@ -14,8 +14,8 @@ class Loader {
   function should_track_visit() {
     return ( !is_user_logged_in() || get_option('track_logged_in') );
   }
-  
-  
+
+
   /**
    * Returns if the cookie is present
    *
@@ -86,7 +86,7 @@ class Loader {
   function google_analytics_script() {
     if( $this->should_track_visit() && ! get_option('ga_use_tag_manager') ) {
       $GA_TRACKING_CODE = get_option('ga_tracking_code');
-      $ANONYMIZE_IP     = get_option('ga_anonymize_ip');
+      $ANONYMIZE_IP     = (get_option('ga_anonymize_ip') !== false) ? (boolean) get_option('ga_anonymize_ip') : true ;
       ?>
 
       <script>
@@ -109,7 +109,7 @@ class Loader {
         ga('send', 'pageview');
       }
       </script>
-      
+
         <?php
     }
   }
@@ -150,5 +150,5 @@ class Loader {
     wp_enqueue_style( 'custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/css/admin-styles.css' );
 
   }
-  
+
 }
