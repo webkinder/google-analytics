@@ -14,7 +14,7 @@
  		this.containerID = containerID;
     this.checkboxClass = 'wk-checkbox';
  		this.checkboxSelector = containerID + " ." + this.checkboxClass;
- 		jQuery( containerID ).html('<input type="checkbox" class="\'+this.checkboxClass+\'" id="wk-ga-opt-out" /><label for="wk-ga-opt-out">'+this.TrackText+' </label>');
+ 		jQuery( containerID ).html('<input type="checkbox" class="'+this.checkboxClass+'" id="wk-ga-opt-out" /><label for="wk-ga-opt-out">'+this.TrackText+' </label>');
 
  		this.renderCheckbox();
 

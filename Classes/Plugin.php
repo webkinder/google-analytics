@@ -27,6 +27,7 @@ class Plugin {
   	//cookie handling
   	add_action( 'admin_enqueue_scripts', array( $this->loader, 'load_admin_styles' ) );
   	add_action( 'wp_enqueue_scripts', array( $this->loader, 'register_public_scripts' ) );
+  	add_action( 'admin_enqueue_scripts', array( $this->loader, 'register_public_scripts' ) );
     //cookie function
     add_action( 'wp_head', array( $this->loader, 'render_script') );
     //Google Analytics script in <head>
