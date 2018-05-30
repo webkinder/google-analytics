@@ -8,5 +8,5 @@
 	<li><?php echo __( 'For more information about Google\'s data usage, settings and opt-out options, please visit Google\'s websites: <a href="https://www.google.com/intl/en/policies/privacy/partners">https://www.google.com/intl/en/policies/privacy/partners</a> ("Google\'s use of your data when you use websites or apps of our partners"), <a href="https://policies.google.com/technologies/ads">https://policies.google.com/technologies/ads</a> ("Advertising use of data"), <a href="https://adssettings.google.com/authenticated">https://adssettings.google.com/authenticated</a> ("Managing information Google uses to show you ads").', 'wk-google-analytics' ); ?></li>
 	<li><?php echo __( 'Incidentally, the personal data will be anonymized or deleted after a lapse of 26 months.', 'wk-google-analytics' ); ?></li>
 </ol>
-<p>Opt-out für Google Analytics</p>
+<p><?php echo __( 'Opt-out for Google Analytics', 'wk-google-analytics'); ?></p>
 [google_analytics_opt_out]

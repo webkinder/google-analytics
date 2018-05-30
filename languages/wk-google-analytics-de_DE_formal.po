@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-28 15:56+0200\n"
-"PO-Revision-Date: 2018-05-28 15:56+0200\n"
+"POT-Creation-Date: 2018-05-30 17:03+0200\n"
+"PO-Revision-Date: 2018-05-30 17:03+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE@formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Poedit 2.0.6\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Do not track any visits from this device."
 msgstr ""
 
-#: Classes/Plugin.php:59
+#: Classes/Plugin.php:60
 msgid "Donate to this plugin"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgstr ""
 "auch Google Tag Manager verwendet werden, indem das entsprechende Setting "
 "gesetzt wird."
 
-#: Classes/Settings.php:215
+#: Classes/Settings.php:216
 msgid ""
 "This setting is only for Google Analytics. If you use GTM please set this "
 "setting in your GTM account."
@@ -195,6 +195,10 @@ msgstr ""
 "Im Übrigen werden die personenbezogenen Daten nach einem Ablauf von 26 "
 "Monaten anonymisiert oder gelöscht."
 
+#: Content/privacy_policy.php:11
+msgid "Opt-out for Google Analytics"
+msgstr "Opt-out für Google Analytics"
+
 #: includes/mailchimp-form.php:11
 msgid "Stay updated on this plugin"
 msgstr ""
@@ -227,24 +231,4 @@ msgstr ""
 
 #: includes/mailchimp-form.php:33
 msgid "Subscribe"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Google Analytics by WebKinder"
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://wordpress.org/plugins/wk-google-analytics/"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "Google Analytics for WordPress without tracking your own visits"
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "WebKinder"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.webkinder.ch"
 msgstr ""
