@@ -42,7 +42,6 @@ class Plugin {
     add_filter( 'plugin_row_meta', array( $this, 'additional_admin_information_links' ), 10, 2);
     add_filter( 'plugin_action_links_' . plugin_basename( __FILE__ ), array( $this, 'additional_admin_action_links' ) );
 
-    add_action( 'admin_init', array($this, 'add_privacy_policy_content') );
     add_filter( 'wp_get_default_privacy_policy_content' , array( $this, 'add_privacy_policy_default_text') );
   }
 
@@ -73,16 +72,6 @@ class Plugin {
    */
 	function load_textdomain() {
 		load_plugin_textdomain( 'wk-google-analytics', false, basename( plugin_dir_path( __DIR__ ) )  . '/languages' );
-	}
-
-	/**
-	 * Add privacy policy to WordPress privacy policy
-	 */
-	function add_privacy_policy_content() {
-		if( !function_exists( 'wp_add_privacy_policy_content' ) ) {
-			return;
-		}
-		wp_add_privacy_policy_content( 'Google Analytics', self::get_ga_policy_text() );
 	}
 
 	/**
