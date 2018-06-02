@@ -2,14 +2,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
 "POT-Creation-Date: 2018-05-30 17:03+0200\n"
-"PO-Revision-Date: 2018-05-30 17:03+0200\n"
+"PO-Revision-Date: 2018-06-02 14:22+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE@formal\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -23,39 +23,39 @@ msgstr ""
 
 #: Classes/Loader.php:129
 msgid "Do not track any visits from this device."
-msgstr ""
+msgstr "Keine Besuche von diesem Gerät tracken."
 
 #: Classes/Plugin.php:60
 msgid "Donate to this plugin"
-msgstr ""
+msgstr "Spenden um das Plugin zu unterstützen"
 
 #: Classes/Settings.php:43
 msgid "Test your tracking code now!"
-msgstr ""
+msgstr "Testen Sie Ihren Tracking Code jetzt!"
 
 #: Classes/Settings.php:79 Content/privacy_policy.php:1
 msgid "Google Analytics"
-msgstr ""
+msgstr "Google Analytics"
 
 #: Classes/Settings.php:94
 msgid "GA Tracking Code"
-msgstr ""
+msgstr "GA Tracking Code"
 
 #: Classes/Settings.php:110
 msgid "Anonymize IP\"s"
-msgstr ""
+msgstr "IP Anonymisierung"
 
 #: Classes/Settings.php:126
 msgid "Track logged in users"
-msgstr ""
+msgstr "Eingeloggte Benutzer tracken"
 
 #: Classes/Settings.php:142
 msgid "Use Google Tag Manager instead"
-msgstr ""
+msgstr "Google Tag Manager verwenden"
 
 #: Classes/Settings.php:158
 msgid "Google Tag Manager ID"
-msgstr ""
+msgstr "Google Tag Manager ID"
 
 #: Classes/Settings.php:176
 msgid ""
@@ -77,11 +77,11 @@ msgstr ""
 
 #: Config/EnvironmentChecksConfig.php:6
 msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
-msgstr ""
+msgstr "WebKinder Google Analytics benötigt PHP 5.3 oder höher."
 
 #: Config/EnvironmentChecksConfig.php:11
 msgid "WebKinder Google Analytics needs WordPress version 4.8 to run."
-msgstr ""
+msgstr "WebKinder Google Analytics benötigt WordPress Version 4.8 oder höher."
 
 #: Content/privacy_policy.php:3
 msgid ""
@@ -201,19 +201,19 @@ msgstr "Opt-out für Google Analytics"
 
 #: includes/mailchimp-form.php:11
 msgid "Stay updated on this plugin"
-msgstr ""
+msgstr "Erfahre das Wichtigste über jedes Update"
 
 #: includes/mailchimp-form.php:13
 msgid "Email Address"
-msgstr ""
+msgstr "Email Adresse"
 
 #: includes/mailchimp-form.php:17
 msgid "First Name"
-msgstr ""
+msgstr "Vorname"
 
 #: includes/mailchimp-form.php:21
 msgid "Last Name"
-msgstr ""
+msgstr "Nachnahme"
 
 #: includes/mailchimp-form.php:25
 #, fuzzy
@@ -231,4 +231,4 @@ msgstr ""
 
 #: includes/mailchimp-form.php:33
 msgid "Subscribe"
-msgstr ""
+msgstr "Abonnieren"
