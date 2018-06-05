@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-05-30 17:02+0200\n"
-"PO-Revision-Date: 2018-05-30 17:02+0200\n"
+"POT-Creation-Date: 2018-06-02 14:17+0200\n"
+"PO-Revision-Date: 2018-06-02 14:20+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.6\n"
+"X-Generator: Poedit 2.0.7\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Do not track any visits from this device."
 msgstr "Keine Besuche von diesem Gerät tracken."
 
-#: Classes/Plugin.php:60
+#: Classes/Plugin.php:59
 msgid "Donate to this plugin"
 msgstr "Erfahre das Wichtigste über jedes Update"
 
@@ -35,7 +35,7 @@ msgstr "Teste deinen Tracking Code jetzt!"
 
 #: Classes/Settings.php:79 Content/privacy_policy.php:1
 msgid "Google Analytics"
-msgstr ""
+msgstr "Google Analytics"
 
 #: Classes/Settings.php:94
 msgid "GA Tracking Code"
@@ -77,11 +77,11 @@ msgstr ""
 
 #: Config/EnvironmentChecksConfig.php:6
 msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
-msgstr ""
+msgstr "WebKinder Google Analytics benötigt PHP 5.3 oder höher."
 
 #: Config/EnvironmentChecksConfig.php:11
 msgid "WebKinder Google Analytics needs WordPress version 4.8 to run."
-msgstr ""
+msgstr "WebKinder Google Analytics benötigt WordPress Version 4.8 oder höher."
 
 #: Content/privacy_policy.php:3
 msgid ""
@@ -232,6 +232,26 @@ msgstr ""
 #: includes/mailchimp-form.php:33
 msgid "Subscribe"
 msgstr "Abonnieren"
+
+#. Plugin Name of the plugin/theme
+msgid "Google Analytics by WebKinder"
+msgstr "Google Analytics by WebKinder"
+
+#. Plugin URI of the plugin/theme
+msgid "https://wordpress.org/plugins/wk-google-analytics/"
+msgstr "https://wordpress.org/plugins/wk-google-analytics/"
+
+#. Description of the plugin/theme
+msgid "Google Analytics for WordPress without tracking your own visits"
+msgstr "Google Analytics für WordPress ohne die eigenen Besuche zu tacken"
+
+#. Author of the plugin/theme
+msgid "WebKinder"
+msgstr "WebKinder"
+
+#. Author URI of the plugin/theme
+msgid "https://www.webkinder.ch"
+msgstr "https://www.webkinder.ch"
 
 #~ msgid "Page visits from this device are not tracked."
 #~ msgstr "Seitenbesuche von diesem Gerät werden nicht getrackt."
