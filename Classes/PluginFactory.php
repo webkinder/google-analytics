@@ -19,7 +19,7 @@ final class PluginFactory
 
             return $plugin;
         } else {
-            add_action('admin_notices', [ __CLASS__, 'DisplayEvironmentErrors' ]);
+            add_action('admin_notices', array( __CLASS__, 'DisplayEvironmentErrors' ));
             return null;
         }
     }
@@ -33,7 +33,7 @@ final class PluginFactory
     // Return failed checks
     public static function environmentChecks()
     {
-        $environment_checks = [];
+        $environment_checks = array();
         foreach (self::getEnvironmentChecks() as $check) {
             if ($check['check']) {
                 array_push($environment_checks, $check);
