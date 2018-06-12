@@ -44,5 +44,6 @@ test:
       phpenv global 5.3.25
       rm -rf $WP_TESTS_DIR $WP_CORE_DIR
       bash bin/install-wp-tests.sh wordpress_test ubuntu '' 127.0.0.1 latest
-      phpunit
-      WP_MULTISITE=1 phpunit
+      phpunit --configuration phpunit.xml.dist-php5.3
+      WP_MULTISITE=1 phpunit --configuration phpunit.xml.dist-php5.3
+
