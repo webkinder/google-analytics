@@ -2,9 +2,9 @@
 Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 3.0
-Requires PHP: 5.3
+Requires PHP: 5.4
 Tested up to: 4.9.6
-Stable tag: 1.7.1
+Stable tag: 1.7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.7.2 =
+
+* Automatically deactivate plugin when PHP version is not sufficient.
 
 = 1.7.1 =
 * The "Anonymize IPs" field is now checked by default.

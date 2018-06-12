@@ -36,3 +36,9 @@ test:
       bash bin/install-wp-tests.sh wordpress_test ubuntu '' 127.0.0.1 latest
       phpunit
       WP_MULTISITE=1 phpunit
+    - |
+      phpenv global 5.4.4
+      rm -rf $WP_TESTS_DIR $WP_CORE_DIR
+      bash bin/install-wp-tests.sh wordpress_test ubuntu '' 127.0.0.1 latest
+      phpunit
+      WP_MULTISITE=1 phpunit
