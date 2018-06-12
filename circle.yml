@@ -11,8 +11,6 @@ dependencies:
     - sudo apt-get update; sudo apt-get install subversion
 
 test:
-  pre:
-    - composer global require "phpunit/phpunit=5.7.*"
   override:
     - |
       rm -rf $WP_TESTS_DIR $WP_CORE_DIR
@@ -38,6 +36,12 @@ test:
       WP_MULTISITE=1 phpunit
     - |
       phpenv global 5.4.4
+      rm -rf $WP_TESTS_DIR $WP_CORE_DIR
+      bash bin/install-wp-tests.sh wordpress_test ubuntu '' 127.0.0.1 latest
+      phpunit
+      WP_MULTISITE=1 phpunit
+    - |
+      phpenv global 5.3.25
       rm -rf $WP_TESTS_DIR $WP_CORE_DIR
       bash bin/install-wp-tests.sh wordpress_test ubuntu '' 127.0.0.1 latest
       phpunit
