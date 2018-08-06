@@ -1,5 +1,5 @@
 # google-analytics
 
-**Maintainer: Mauro**
+**Maintainer: Pascal**
 
 WordPress Google Analytics Plugin
