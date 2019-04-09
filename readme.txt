@@ -33,6 +33,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 == Changelog ==
 
+= 1.7.3 =
+
+* Bugfix for caching plugins
+
 = 1.7.2 =
 
 * Automatically deactivate plugin when PHP version is not sufficient.

@@ -70,8 +70,8 @@ class Loader
 					})(window, document, 'script', 'dataLayer', '<?php echo $TAG_MANAGER_ID; ?>');
 				}
 			</script> <?php
-			return ob_get_clean();
 		}
+		return ob_get_clean();
 	}
 
 
@@ -83,6 +83,7 @@ class Loader
 	 */
 	function google_tag_manager_noscript()
 	{
+		ob_start();
 		if ($this->should_track_visit() && get_option('ga_use_tag_manager')) {
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 			?>
@@ -93,6 +94,7 @@ class Loader
 
 			<?php
 		}
+		return ob_get_clean();
 	}
 
 
@@ -105,6 +107,7 @@ class Loader
 	 */
 	function google_analytics_script()
 	{
+		ob_start();
 		if ($this->should_track_visit() && !get_option('ga_use_tag_manager')) {
 			$GA_TRACKING_CODE = get_option('ga_tracking_code');
 			$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
@@ -140,6 +143,7 @@ class Loader
 
 			<?php
 		}
+		return ob_get_clean();
 	}
 
 	/**
@@ -160,10 +164,10 @@ class Loader
 		wp_localize_script('wk-ga-admin-js', 'text_content', $translation_array);
 
 		//cookie function
-		wp_add_inline_script('wk-cookie-check', [$this, 'render_script']);
+		wp_add_inline_script('wk-cookie-check', $this->render_script());
 
 		//Google Analytics script in <head>
-		wp_add_inline_script('wk-analytics-script', [$this, 'google_tag_manager_script']);
+		wp_add_inline_script('wk-analytics-script', $this->google_tag_manager_script());
 
 	}
 
