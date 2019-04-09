@@ -29,11 +29,9 @@ class Loader
 	{
 		ob_start();
 		?>
-		<script>
-			function hasWKGoogleAnalyticsCookie() {
-				return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname)).test(document.cookie);
-			}
-		</script>
+		function hasWKGoogleAnalyticsCookie() {
+			return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname)).test(document.cookie);
+		}
 		<?php
 		return ob_get_clean();
 	}
@@ -52,24 +50,23 @@ class Loader
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 
 			?>
-			<script>
-				if (!hasWKGoogleAnalyticsCookie()) {
-					//Google Tag Manager
-					(function (w, d, s, l, i) {
-						w[l] = w[l] || [];
-						w[l].push({
-							'gtm.start':
-								new Date().getTime(), event: 'gtm.js'
-						});
-						var f = d.getElementsByTagName(s)[0],
-							j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
-						j.async = true;
-						j.src =
-							'//www.googletagmanager.com/gtm.js?id=' + i + dl;
-						f.parentNode.insertBefore(j, f);
-					})(window, document, 'script', 'dataLayer', '<?php echo $TAG_MANAGER_ID; ?>');
-				}
-			</script> <?php
+			if (!hasWKGoogleAnalyticsCookie()) {
+			//Google Tag Manager
+			(function (w, d, s, l, i) {
+			w[l] = w[l] || [];
+			w[l].push({
+			'gtm.start':
+			new Date().getTime(), event: 'gtm.js'
+			});
+			var f = d.getElementsByTagName(s)[0],
+			j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : '';
+			j.async = true;
+			j.src =
+			'//www.googletagmanager.com/gtm.js?id=' + i + dl;
+			f.parentNode.insertBefore(j, f);
+			})(window, document, 'script', 'dataLayer', '<?php echo $TAG_MANAGER_ID; ?>');
+			}
+			<?php
 		}
 		return ob_get_clean();
 	}
@@ -147,6 +144,19 @@ class Loader
 	}
 
 	/**
+	 * Registers frontend scripts
+	 */
+	function register_ga_scripts()
+	{
+		//cookie function
+		wp_add_inline_script('wk-cookie-check', $this->render_script());
+
+		//Google Analytics script in <head>
+		wp_add_inline_script('wk-analytics-script', $this->google_tag_manager_script());
+
+	}
+
+	/**
 	 * Registers cookie scripts for opt out shortcode
 	 */
 	function register_public_scripts()
@@ -162,13 +172,6 @@ class Loader
 			'TrackText' => __('Do not track any visits from this device.', 'wk-google-analytics')
 		);
 		wp_localize_script('wk-ga-admin-js', 'text_content', $translation_array);
-
-		//cookie function
-		wp_add_inline_script('wk-cookie-check', $this->render_script());
-
-		//Google Analytics script in <head>
-		wp_add_inline_script('wk-analytics-script', $this->google_tag_manager_script());
-
 	}
 
 
