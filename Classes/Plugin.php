@@ -28,12 +28,6 @@ class Plugin {
   	add_action( 'admin_enqueue_scripts', array( $this->loader, 'load_admin_styles' ) );
   	add_action( 'wp_enqueue_scripts', array( $this->loader, 'register_public_scripts' ) );
   	add_action( 'admin_enqueue_scripts', array( $this->loader, 'register_public_scripts' ) );
-    //cookie function
-    add_action( 'wp_head', array( $this->loader, 'render_script') );
-    //Google Analytics script in <head>
-    add_action( 'wp_head', array( $this->loader, 'google_analytics_script') );
-    //Google Tag Manager script in header
-    add_action( 'wp_head', array( $this->loader, 'google_tag_manager_script'));
     //Google Tag Manager noscript footer
     add_action( 'wp_footer', array( $this->loader, 'google_tag_manager_noscript'));
 
