@@ -22,12 +22,12 @@ class Plugin
 		add_action('admin_init', array($this->settings, 'register_settings'));
 		add_action('admin_menu', array($this->settings, 'settings_page'));
 
-		// set logged in cookie after wp is initialized and auth has happened
-		add_action( 'init', array($this->loader,'set_logged_in_cookie'));
-
 		//loader
 		include_once 'Loader.php';
 		$this->loader = new Loader();
+
+		// set logged in cookie after wp is initialized and auth has happened
+		add_action( 'init', array($this->loader,'set_logged_in_cookie'));
 
 		//cookie handling
 		add_action('admin_enqueue_scripts', array($this->loader, 'load_admin_styles'));
