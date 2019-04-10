@@ -30,7 +30,7 @@ class Loader
 		ob_start();
 		?>
 		function hasWKGoogleAnalyticsCookie() {
-			return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname)).test(document.cookie);
+		return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname)).test(document.cookie);
 		}
 		<?php
 		return ob_get_clean();
@@ -110,33 +110,31 @@ class Loader
 			$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
 			?>
 
-			<script>
-				if (!hasWKGoogleAnalyticsCookie()) {
-					//Google Analytics
-					(function (i, s, o, g, r, a, m) {
-						i['GoogleAnalyticsObject'] = r;
-						i[r] = i[r] || function () {
-							(i[r].q = i[r].q || []).push(arguments)
-						}, i[r].l = 1 * new Date();
-						a = s.createElement(o),
-							m = s.getElementsByTagName(o)[0];
-						a.async = 1;
-						a.src = g;
-						m.parentNode.insertBefore(a, m)
-					})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-					ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
+			if (!hasWKGoogleAnalyticsCookie()) {
+			//Google Analytics
+			(function (i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function () {
+			(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+			m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+			})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+			ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
 
-					<?php
-					if( $ANONYMIZE_IP ) :
-					?>
-					ga('set', 'anonymizeIp', true);
-					<?php
-					endif;
-					?>
+			<?php
+			if( $ANONYMIZE_IP ) :
+				?>
+				ga('set', 'anonymizeIp', true);
+			<?php
+			endif;
+			?>
 
-					ga('send', 'pageview');
-				}
-			</script>
+			ga('send', 'pageview');
+			}
 
 			<?php
 		}
@@ -149,10 +147,19 @@ class Loader
 	function register_ga_scripts()
 	{
 		//cookie function
+		wp_register_script('wk-cookie-check', '');
+		wp_enqueue_script('wk-cookie-check');
 		wp_add_inline_script('wk-cookie-check', $this->render_script());
 
 		//Google Analytics script in <head>
-		wp_add_inline_script('wk-analytics-script', $this->google_tag_manager_script());
+		wp_register_script('wk-tag-manager-script', '');
+		wp_enqueue_script('wk-tag-manager-script');
+		wp_add_inline_script('wk-tag-manager-script', $this->google_tag_manager_script());
+
+		//Google Analytics script in <head>
+		wp_register_script('wk-analytics-script', '');
+		wp_enqueue_script('wk-analytics-script');
+		wp_add_inline_script('wk-analytics-script', $this->google_analytics_script());
 
 	}
 
