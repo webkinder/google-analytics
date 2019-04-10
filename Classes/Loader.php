@@ -6,19 +6,6 @@ class Loader
 {
 
 	/**
-	 * Returns whether the current request should be tracked or not
-	 *
-	 * @since 1.2
-	 * @return boolean
-	 *
-	 */
-	function should_track_visit()
-	{
-		return (!is_user_logged_in() || get_option('track_logged_in'));
-	}
-
-
-	/**
 	 * Returns if the cookie is present
 	 *
 	 * @since 1.2
@@ -36,6 +23,23 @@ class Loader
 		return ob_get_clean();
 	}
 
+	/** 
+	* Outputs a js function that allows a cached page to check if the user should be tracked
+	*/
+	public function output_should_track_js_function(){
+		?>
+		function shouldTrack(){
+			var trackLoggedIn = <?php get_option('track_logged_in') ?>;
+			var loggedIn = $("body").hasClass("logged-in");
+			if(!loggedin){
+				return true;
+			} else if( trackLoggedIn ) {
+				return true;
+			}
+			return false;
+		}
+		<?php
+	}
 
 	/**
 	 * Outputs the Google Tag Manager script tag if necessary
@@ -46,11 +50,12 @@ class Loader
 	function google_tag_manager_script()
 	{
 		ob_start();
-		if ($this->should_track_visit() && get_option('ga_use_tag_manager')) {
+		if (get_option('ga_use_tag_manager')) {
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 
+			output_should_track_js_function();
 			?>
-			if (!hasWKGoogleAnalyticsCookie()) {
+			if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
 			//Google Tag Manager
 			(function (w, d, s, l, i) {
 			w[l] = w[l] || [];
@@ -81,7 +86,7 @@ class Loader
 	function google_tag_manager_noscript()
 	{
 		ob_start();
-		if ($this->should_track_visit() && get_option('ga_use_tag_manager')) {
+		if (get_option('ga_use_tag_manager')) {
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 			?>
 			<noscript>
@@ -105,13 +110,13 @@ class Loader
 	function google_analytics_script()
 	{
 		ob_start();
-		if ($this->should_track_visit() && !get_option('ga_use_tag_manager')) {
+		if (!get_option('ga_use_tag_manager')) {
 			$GA_TRACKING_CODE = get_option('ga_tracking_code');
 			$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
 			?>
-
 			<script>
-				if (!hasWKGoogleAnalyticsCookie()) {
+				<?php output_should_track_js_function(); ?>
+				if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
 					//Google Analytics
 					(function (i, s, o, g, r, a, m) {
 						i['GoogleAnalyticsObject'] = r;
