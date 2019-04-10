@@ -28,9 +28,25 @@ class Loader
 	*/
 	public function output_should_track_js_function(){
 		?>
+		// https://www.w3schools.com/js/js_cookies.asp
+		function getCookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i < ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
 		function shouldTrack(){
 			var trackLoggedIn = <?php get_option('track_logged_in') ?>;
-			var loggedIn = $("body").hasClass("logged-in");
+			var loggedIn = getCookie("wk-ga-logged-in");
 			if(!loggedin){
 				return true;
 			} else if( trackLoggedIn ) {
@@ -198,6 +214,15 @@ class Loader
 		//admin styles
 		wp_enqueue_style('custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/css/admin-styles.css');
 
+	}
+
+	/**
+	 * Set a logged in cookie that is available to cached pages
+	 * Do not use this cookie for security checks!
+	 *  
+	*/ 
+	function set_logged_in_cookie(){
+		setcookie('wk-ga-logged-in', is_user_logged_in(), time() + 31556926, '/');
 	}
 
 }
