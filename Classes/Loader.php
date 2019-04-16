@@ -33,7 +33,7 @@ class Loader
 		<script>
 		function shouldTrack(){
 			var trackLoggedIn = <?php echo (get_option('track_logged_in') ? 'true' : 'false'); ?>;
-			var loggedIn = $("body").hasClass("logged-in");
+			var loggedIn = jQuery("body").hasClass("logged-in");
 			if(!loggedIn){
 				return true;
 			} else if( trackLoggedIn ) {
