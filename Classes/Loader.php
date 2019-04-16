@@ -34,7 +34,7 @@ class Loader
 		?>
 		<script>
 		function shouldTrack(){
-			var trackLoggedIn = <?php echo (get_option('track_logged_in') ? get_option('track_logged_in') : '\'\''); ?>;
+			var trackLoggedIn = <?php echo (get_option('track_logged_in') ? get_option('track_logged_in') : 'false'); ?>;
 			var loggedIn = document.cookie.indexOf("wk-ga-logged-in") !== -1;
 			if(!loggedIn){
 				return true;
