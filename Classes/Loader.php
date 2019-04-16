@@ -29,13 +29,11 @@ class Loader
 	* Outputs a js function that allows a cached page to check if the user should be tracked
 	*/
 	public function output_should_track_js_function(){
-
-
 		?>
 		<script>
 		function shouldTrack(){
 			var trackLoggedIn = <?php echo (get_option('track_logged_in') ? 'true' : 'false'); ?>;
-			var loggedIn = document.cookie.indexOf("wk-ga-logged-in") !== -1;
+			var loggedIn = $("body").hasClass("logged-in");
 			if(!loggedIn){
 				return true;
 			} else if( trackLoggedIn ) {
@@ -208,14 +206,4 @@ class Loader
 		wp_enqueue_style('custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)) . '/css/admin-styles.css');
 
 	}
-
-	/**
-	 * Set a logged in cookie that is available to cached pages
-	 * Do not use this cookie for security checks!
-	 *  
-	*/ 
-	function set_logged_in_cookie(){
-		setcookie('wk-ga-logged-in', is_user_logged_in(), time() + 31556926, '/');
-	}
-
 }
