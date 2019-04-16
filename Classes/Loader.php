@@ -16,9 +16,11 @@ class Loader
 	{
 		ob_start();
 		?>
+		<script>
 		function hasWKGoogleAnalyticsCookie() {
 		return (new RegExp('wp_wk_ga_untrack_' + document.location.hostname)).test(document.cookie);
 		}
+		</script>
 		<?php
 		return ob_get_clean();
 	}
@@ -27,17 +29,21 @@ class Loader
 	* Outputs a js function that allows a cached page to check if the user should be tracked
 	*/
 	public function output_should_track_js_function(){
+
+
 		?>
+		<script>
 		function shouldTrack(){
-			var trackLoggedIn = <?php get_option('track_logged_in') ?>;
-			var loggedIn = document.cookie.indeOf("wk-ga-logged-in") !== -1;
-			if(!loggedin){
+			var trackLoggedIn = <?php echo (get_option('track_logged_in') ? get_option('track_logged_in') : '\'\''); ?>;
+			var loggedIn = document.cookie.indexOf("wk-ga-logged-in") !== -1;
+			if(!loggedIn){
 				return true;
 			} else if( trackLoggedIn ) {
 				return true;
 			}
 			return false;
 		}
+		</script>
 		<?php
 	}
 
@@ -55,6 +61,7 @@ class Loader
 
 			$this->output_should_track_js_function();
 			?>
+			<script>
 			if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
 			//Google Tag Manager
 			(function (w, d, s, l, i) {
@@ -71,6 +78,7 @@ class Loader
 			f.parentNode.insertBefore(j, f);
 			})(window, document, 'script', 'dataLayer', '<?php echo $TAG_MANAGER_ID; ?>');
 			}
+			</script>
 			<?php
 		}
 		return ob_get_clean();
@@ -115,6 +123,7 @@ class Loader
 			$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
 			$this->output_should_track_js_function(); 
 			?>
+			<script>
 			if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
 			//Google Analytics
 			(function (i, s, o, g, r, a, m) {
@@ -140,6 +149,7 @@ class Loader
 
 			ga('send', 'pageview');
 			}
+			</script>
 			<?php
 		}
 		return ob_get_clean();
@@ -151,20 +161,13 @@ class Loader
 	function register_ga_scripts()
 	{
 		//cookie function
-		wp_register_script('wk-cookie-check', '');
-		wp_enqueue_script('wk-cookie-check');
-		wp_add_inline_script('wk-cookie-check', $this->render_script());
+		echo $this->render_script();
 
 		//Google Analytics script in <head>
-		wp_register_script('wk-tag-manager-script', '');
-		wp_enqueue_script('wk-tag-manager-script');
-		wp_add_inline_script('wk-tag-manager-script', $this->google_tag_manager_script());
+		echo $this->google_tag_manager_script();
 
 		//Google Analytics script in <head>
-		wp_register_script('wk-analytics-script', '');
-		wp_enqueue_script('wk-analytics-script');
-		wp_add_inline_script('wk-analytics-script', $this->google_analytics_script());
-
+		echo $this->google_analytics_script();
 	}
 
 	/**
