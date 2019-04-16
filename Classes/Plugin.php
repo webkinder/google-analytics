@@ -8,6 +8,8 @@ class Plugin
 	public function run()
 	{
 
+
+
 		//i18n
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
 
@@ -26,12 +28,15 @@ class Plugin
 		include_once 'Loader.php';
 		$this->loader = new Loader();
 
+		// set logged in cookie after wp is initialized and auth has happened
+		add_action( 'init', array($this->loader,'set_logged_in_cookie'));
+
 		//cookie handling
 		add_action('admin_enqueue_scripts', array($this->loader, 'load_admin_styles'));
 		add_action('wp_enqueue_scripts', array($this->loader, 'register_public_scripts'));
 		add_action('admin_enqueue_scripts', array($this->loader, 'register_public_scripts'));
 
-		add_action('wp_enqueue_scripts', array($this->loader, 'register_ga_scripts'));
+		add_action('wp_head', array($this->loader, 'register_ga_scripts'));
 
 		//Google Tag Manager noscript footer
 		add_action('wp_footer', array($this->loader, 'google_tag_manager_noscript'));
