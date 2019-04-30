@@ -1,4 +1,4 @@
-=== Google Analytics ===
+=== Google Analytics and Google Tag Manager===
 Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 3.0
