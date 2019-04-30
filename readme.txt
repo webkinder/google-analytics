@@ -3,8 +3,8 @@ Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 3.0
 Requires PHP: 5.6
-Tested up to: 4.9.6
-Stable tag: 1.7.2
+Tested up to: 5.1.0
+Stable tag: 1.7.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
