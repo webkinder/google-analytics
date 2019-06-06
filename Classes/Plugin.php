@@ -7,7 +7,6 @@ class Plugin
 
 	public function run()
 	{
-
 		//i18n
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
 
@@ -31,11 +30,10 @@ class Plugin
 		add_action('wp_enqueue_scripts', array($this->loader, 'register_public_scripts'));
 		add_action('admin_enqueue_scripts', array($this->loader, 'register_public_scripts'));
 
-		add_action('wp_enqueue_scripts', array($this->loader, 'register_ga_scripts'));
+		add_action('wp_head', array($this->loader, 'register_ga_scripts'));
 
 		//Google Tag Manager noscript footer
 		add_action('wp_footer', array($this->loader, 'google_tag_manager_noscript'));
-
 
 		//additional links to admin plugin page
 		add_filter('plugin_row_meta', array($this, 'additional_admin_information_links'), 10, 2);
