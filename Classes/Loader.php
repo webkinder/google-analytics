@@ -147,12 +147,12 @@ class Loader
 	function register_ga_scripts()
 	{
 		//Google Analytics script in <head>
-		wp_register_script('wk-tag-manager-script', '', ['wk-cookie-check']);
+		wp_register_script('wk-tag-manager-script', '');
 		wp_enqueue_script('wk-tag-manager-script');
 		wp_add_inline_script('wk-tag-manager-script', $this->google_tag_manager_script());
 
 		//Google Analytics script in <head>
-		wp_register_script('wk-analytics-script', '', ['wk-cookie-check']);
+		wp_register_script('wk-analytics-script', '');
 		wp_enqueue_script('wk-analytics-script');
 		wp_add_inline_script('wk-analytics-script', $this->google_analytics_script());
 
