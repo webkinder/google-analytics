@@ -100,7 +100,7 @@ class Plugin
 	static function get_ga_policy_text()
 	{
 		ob_start();
-		include WK_GOOGLE_ANALYTICS_DIR . '/Content/privacy_policy.php';
+		include WK_GOOGLE_ANALYTICS_DIR . '/content/privacy_policy.php';
 		$content = ob_get_clean();
 		return $content;
 	}
