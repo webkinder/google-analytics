@@ -24,10 +24,10 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Mauro Bringolf** - https://github.com/maurobringolf
 * **Pascal Knecht** - https://github.com/pascalknecht
 * **Raphael Portmann** - https://github.com/raphaelportmann
 * **Enrik Berisha** - https://github.com/enrikberisha
+* **Mauro Bringolf** - https://github.com/maurobringolf
 
 See also the list of [contributors](https://github.com/webkinder/google-analytics/graphs/contributors) who participated in this project.
 

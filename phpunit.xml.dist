@@ -24,7 +24,4 @@
 			<file>./wk-ga.php</file>
 		</whitelist>
 	</filter>
-	<logging>
-		<log type="coverage-html" target="coverage-report" lowUpperBound="20" highLowerBound="40"/>
-	</logging>
 </phpunit>
