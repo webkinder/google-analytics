@@ -5,6 +5,16 @@ namespace WebKinder\GoogleAnalytics;
 class Plugin
 {
 
+	/**
+	 * @var Loader
+	 */
+	 private $loader;
+
+	/**
+	 * @var Settings
+	 */
+	private $settings;
+
 	public function run()
 	{
 
@@ -12,18 +22,15 @@ class Plugin
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
 
 		//opt-out button
-		include_once 'OptOutButton.php';
 		OptOutButton::init();
 
 		//settings
-		include_once 'Settings.php';
 		$this->settings = new Settings();
 
 		add_action('admin_init', array($this->settings, 'register_settings'));
 		add_action('admin_menu', array($this->settings, 'settings_page'));
 
 		//loader
-		include_once 'Loader.php';
 		$this->loader = new Loader();
 
 		//cookie handling

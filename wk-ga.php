@@ -15,9 +15,10 @@ Text Domain: wk-google-analytics
 
 define('WK_GOOGLE_ANALYTICS_DIR', dirname(__FILE__));
 
-include_once 'Classes/PluginFactory.php';
+$autoload = __DIR__ . '/vendor/autoload.php';
+if (file_exists($autoload)) {
+	require_once($autoload);
+}
 
 // If EnvironmentChecks fails dont run
-if (WebKinder\GoogleAnalytics\PluginFactory::create() !== null) {
-    WebKinder\GoogleAnalytics\PluginFactory::create()->run();
-}
+WebKinder\GoogleAnalytics\PluginFactory::create()->run();
