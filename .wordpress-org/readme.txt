@@ -33,6 +33,12 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 == Changelog ==
 
+= 1.8.0 =
+
+* Bugfix for caching plugins
+* Refactored code base
+* Dropping support for PHP 5.6, 7.0
+
 = 1.7.4 =
 
 * Bugfix for javascript blocked browsers
