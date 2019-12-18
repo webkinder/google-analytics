@@ -8,12 +8,12 @@ class Plugin
 	/**
 	 * @var Loader
 	 */
-	 private $loader;
+	 public $loader;
 
 	/**
 	 * @var Settings
 	 */
-	private $settings;
+	public $settings;
 
 	public function run()
 	{
