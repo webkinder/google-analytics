@@ -33,9 +33,9 @@ class Loader
 	 */
 	public function google_tag_manager_script()
 	{
-		ob_start();
 		$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 
+		ob_start();
 		?>
 		if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
 		//Google Tag Manager
@@ -67,6 +67,7 @@ class Loader
 	public function google_tag_manager_noscript()
 	{
 		ob_start();
+		
 		if (get_option('ga_use_tag_manager')) {
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 			?>
@@ -92,6 +93,8 @@ class Loader
 	{
 		$GA_TRACKING_CODE = get_option('ga_tracking_code');
 		$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
+		
+		ob_start();
 		?>
 
 		if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
