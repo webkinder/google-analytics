@@ -67,7 +67,7 @@ class Loader
 	public function google_tag_manager_noscript()
 	{
 		ob_start();
-		
+
 		if (get_option('ga_use_tag_manager')) {
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 			?>
@@ -93,7 +93,7 @@ class Loader
 	{
 		$GA_TRACKING_CODE = get_option('ga_tracking_code');
 		$ANONYMIZE_IP = (get_option('ga_anonymize_ip') !== false) ? (boolean)get_option('ga_anonymize_ip') : true;
-		
+
 		ob_start();
 		?>
 
@@ -176,7 +176,7 @@ class Loader
 		?>
 		function shouldTrack(){
 		var trackLoggedIn = <?php echo (get_option('track_logged_in') ? 'true' : 'false'); ?>;
-		var loggedIn = document.body.classList.contains('logged-in');
+		var loggedIn = <?php echo (is_user_logged_in() ? 'true' : 'false'); ?>;
 		if(!loggedIn){
 		return true;
 		} else if( trackLoggedIn ) {
