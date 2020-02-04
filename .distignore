@@ -2,6 +2,8 @@
 .editorconfig
 .gitattributes
 .gitignore
+.git
+.github
 .wordpress-org
 phpcs.xml.dist
 phpunit.xml.dist
