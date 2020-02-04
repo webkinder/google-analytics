@@ -33,6 +33,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 == Changelog ==
 
+= 1.8.1 =
+
+* Added assets correctly
+
 = 1.8.0 =
 
 * Bugfix for caching plugins
