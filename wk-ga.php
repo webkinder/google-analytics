@@ -3,7 +3,7 @@
 Plugin Name: Google Analytics by WebKinder
 Plugin URI:  https://wordpress.org/plugins/wk-google-analytics/
 Description: Google Analytics for WordPress without tracking your own visits
-Version:     1.8.0
+Version:     1.8.1
 Author:      WebKinder
 Author URI:  https://www.webkinder.ch
 License:     GPL2
