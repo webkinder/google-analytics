@@ -6,6 +6,10 @@
 .github/*
 .git
 .git/*
+/.wordpress-org
+/.git
+/.github
+/node_modules
 .wordpress-org
 phpcs.xml.dist
 phpunit.xml.dist
