@@ -6,7 +6,7 @@
 
 <center>
 <a href="https://webkinder.ch">
-<img src="https://www.webkinder.ch/static/webkinder-banner.png?v=1" alt="WebKinder Banner" />
+<img src="https://www.webkinder.ch/static/webkinder-banner.png" alt="WebKinder Banner" />
 </a>
 </center>
 
