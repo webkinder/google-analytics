@@ -72,7 +72,7 @@ class Loader
 			$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
 			?>
 			<noscript>
-				<iframe src="//www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
+				<iframe src="https://www.googletagmanager.com/ns.html?id=<?php echo $TAG_MANAGER_ID; ?>"
 						height="0" width="0" style="display:none;visibility:hidden"></iframe>
 			</noscript>
 
