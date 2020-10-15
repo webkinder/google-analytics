@@ -96,33 +96,23 @@ class Loader
 
 		ob_start();
 		?>
-
 		if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
-		//Google Analytics
-		(function (i, s, o, g, r, a, m) {
-		i['GoogleAnalyticsObject'] = r;
-		i[r] = i[r] || function () {
-		(i[r].q = i[r].q || []).push(arguments)
-		}, i[r].l = 1 * new Date();
-		a = s.createElement(o),
-		m = s.getElementsByTagName(o)[0];
-		a.async = 1;
-		a.src = g;
-		m.parentNode.insertBefore(a, m)
-		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
-		ga('create', '<?php echo $GA_TRACKING_CODE; ?>', 'auto');
+			//Google Analytics
+			window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+		  gtag('config', '<?php echo $GA_TRACKING_CODE; ?>');
 
-		<?php
-		if( $ANONYMIZE_IP ) :
+			<?php
+			if( $ANONYMIZE_IP ) :
+				?>
+				gtag('config', '<?php echo $GA_TRACKING_CODE; ?>', { 'anonymize_ip': true });
+			<?php
+			endif;
 			?>
-			ga('set', 'anonymizeIp', true);
-		<?php
-		endif;
-		?>
 
-		ga('send', 'pageview');
+			gtag('event', 'page_view', { 'send_to': '<?php echo $GA_TRACKING_CODE; ?>' });
 		}
-
 		<?php
 		return $this->should_track_user() . $this->render_script() . ob_get_clean();
 	}
@@ -141,7 +131,8 @@ class Loader
 
 		// Google Analytics script in <head>
 		if(!get_option('ga_use_tag_manager')) {
-			wp_register_script('wk-analytics-script', '');
+			$GA_TRACKING_CODE = get_option('ga_tracking_code');
+			wp_register_script('wk-analytics-script', 'https://www.googletagmanager.com/gtag/js?id=' . $GA_TRACKING_CODE);
 			wp_enqueue_script('wk-analytics-script');
 			wp_add_inline_script('wk-analytics-script', $this->google_analytics_script());
 		}
