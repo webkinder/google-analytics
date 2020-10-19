@@ -34,7 +34,7 @@ class Loader
 	public function google_tag_manager_script()
 	{
 		$TAG_MANAGER_ID = get_option('ga_tag_manager_id');
-
+		if (get_option('ga_use_tag_manager')) {
 		ob_start();
 		?>
 		if (!hasWKGoogleAnalyticsCookie() && shouldTrack()) {
@@ -54,6 +54,7 @@ class Loader
 		})(window, document, 'script', 'dataLayer', '<?php echo $TAG_MANAGER_ID; ?>');
 		}
 		<?php
+		}
 		return $this->should_track_user() . $this->render_script() . ob_get_clean();
 	}
 
@@ -101,17 +102,17 @@ class Loader
 			window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
 		  gtag('js', new Date());
-		  gtag('config', '<?php echo $GA_TRACKING_CODE; ?>');
-
-			<?php
-			if( $ANONYMIZE_IP ) :
-				?>
-				gtag('config', '<?php echo $GA_TRACKING_CODE; ?>', { 'anonymize_ip': true });
-			<?php
-			endif;
-			?>
-
-			gtag('event', 'page_view', { 'send_to': '<?php echo $GA_TRACKING_CODE; ?>' });
+		<?php
+		if( $ANONYMIZE_IP ) :
+		?>
+			gtag('config', '<?php echo $GA_TRACKING_CODE; ?>', { 'anonymize_ip': true });
+		<?php
+		else:
+		?>
+			gtag('config', '<?php echo $GA_TRACKING_CODE; ?>');
+		<?php
+		endif;
+		?>
 		}
 		<?php
 		return $this->should_track_user() . $this->render_script() . ob_get_clean();

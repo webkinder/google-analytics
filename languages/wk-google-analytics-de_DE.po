@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2018-06-02 14:17+0200\n"
-"PO-Revision-Date: 2018-06-02 14:20+0200\n"
+"POT-Creation-Date: 2020-10-19 14:58+0000\n"
+"PO-Revision-Date: 2020-10-19 15:02+0000\n"
 "Last-Translator: \n"
-"Language-Team: \n"
+"Language-Team: Deutsch\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.0.7\n"
+"X-Generator: Loco https://localise.biz/\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-Flags-xgettext: --add-comments=translators:\n"
@@ -20,70 +20,14 @@ msgstr ""
 "_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: *.js\n"
+"Report-Msgid-Bugs-To: \n"
+"X-Loco-Version: 2.4.3; wp-5.5.1"
 
-#: Classes/Loader.php:129
-msgid "Do not track any visits from this device."
-msgstr "Keine Besuche von diesem Gerät tracken."
-
-#: Classes/Plugin.php:59
-msgid "Donate to this plugin"
-msgstr "Erfahre das Wichtigste über jedes Update"
-
-#: Classes/Settings.php:43
-msgid "Test your tracking code now!"
-msgstr "Teste deinen Tracking Code jetzt!"
-
-#: Classes/Settings.php:79 Content/privacy_policy.php:1
+#: content/privacy_policy.php:1
 msgid "Google Analytics"
 msgstr "Google Analytics"
 
-#: Classes/Settings.php:94
-msgid "GA Tracking Code"
-msgstr "GA Tracking Code"
-
-#: Classes/Settings.php:110
-msgid "Anonymize IP\"s"
-msgstr "IP Anonymisierung"
-
-#: Classes/Settings.php:126
-msgid "Track logged in users"
-msgstr "Eingeloggte Benutzer tracken"
-
-#: Classes/Settings.php:142
-msgid "Use Google Tag Manager instead"
-msgstr "Google Tag Manager verwenden"
-
-#: Classes/Settings.php:158
-msgid "Google Tag Manager ID"
-msgstr "Google Tag Manager ID"
-
-#: Classes/Settings.php:176
-msgid ""
-"Enter your Google Analytics tracking code below. You can also use Google Tag "
-"Manager instead by checking the relevant setting."
-msgstr ""
-"Gib deinen Google Analytics Tracking Code unten ein. Alternativ kann auch "
-"Google Tag Manager verwendet werden, indem das entsprechende Setting gesetzt "
-"wird."
-
-#: Classes/Settings.php:216
-msgid ""
-"This setting is only for Google Analytics. If you use GTM please set this "
-"setting in your GTM account."
-msgstr ""
-"Diese Einstellung gilt nur für Google Analytics. Falls Google Tag Manager "
-"genutzt wird, muss die Einstellung im Google Tag Manager Konto gesetzt "
-"werden."
-
-#: Config/EnvironmentChecksConfig.php:6
-msgid "WebKinder Google Analytics needs PHP version 5.3 to run."
-msgstr "WebKinder Google Analytics benötigt PHP 5.3 oder höher."
-
-#: Config/EnvironmentChecksConfig.php:11
-msgid "WebKinder Google Analytics needs WordPress version 4.8 to run."
-msgstr "WebKinder Google Analytics benötigt WordPress Version 4.8 oder höher."
-
-#: Content/privacy_policy.php:3
+#: content/privacy_policy.php:3
 msgid ""
 "Based on our legitimate interests (i.e., interest in the analysis, "
 "optimization, and economic operation of our online offer within the meaning "
@@ -100,20 +44,20 @@ msgstr ""
 "Onlineangebotes durch die Nutzer werden in der Regel an einen Server von "
 "Google in den USA übertragen und dort gespeichert."
 
-#: Content/privacy_policy.php:4
+#: content/privacy_policy.php:4
 msgid ""
 "Google is certified under the Privacy Shield Agreement, which provides a "
 "guarantee to comply with European privacy legislation (<a href=\"https://www."
-"privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active\">https://"
-"www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a>)."
+"privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active\">https:"
+"//www.privacyshield.gov/participant?id=a2zt000000001L5AAI&status=Active</a>)."
 msgstr ""
 "Google ist unter dem Privacy-Shield-Abkommen zertifiziert und bietet "
 "hierdurch eine Garantie, das europäische Datenschutzrecht einzuhalten (<a "
 "href=\"https://www.privacyshield.gov/participant?"
-"id=a2zt000000001L5AAI&status=Active\">https://www.privacyshield.gov/"
-"participant?id=a2zt000000001L5AAI&status=Active</a>)."
+"id=a2zt000000001L5AAI&status=Active\">https://www.privacyshield."
+"gov/participant?id=a2zt000000001L5AAI&status=Active</a>)."
 
-#: Content/privacy_policy.php:5
+#: content/privacy_policy.php:5
 msgid ""
 "Google will use this information on our behalf to evaluate the use of our "
 "online offer by users to compile reports on the activities within this "
@@ -129,7 +73,7 @@ msgstr ""
 "den verarbeiteten Daten pseudonyme Nutzungsprofile der Nutzer erstellt "
 "werden."
 
-#: Content/privacy_policy.php:6
+#: content/privacy_policy.php:6
 msgid ""
 "We only use Google Analytics with activated IP anonymization. This means "
 "that the IP address of the users will be shortened by Google within member "
@@ -144,7 +88,7 @@ msgstr ""
 "Ausnahmefällen wird die volle IP-Adresse an einen Server von Google in den "
 "USA übertragen und dort gekürzt."
 
-#: Content/privacy_policy.php:7
+#: content/privacy_policy.php:7
 msgid ""
 "The IP address submitted by the user's browser will not be merged with other "
 "data provided by Google. Users can prevent the storage of cookies by setting "
@@ -162,32 +106,32 @@ msgstr ""
 "Cookie erzeugten und auf ihre Nutzung des Onlineangebotes bezogenen Daten an "
 "Google sowie die Verarbeitung dieser Daten durch Google verhindern, indem "
 "sie das unter folgendem Link verfügbare Browser-Plugin herunterladen und "
-"installieren: <a href=\"https://tools.google.com/dlpage/gaoptout?hl=de"
-"\">https://tools.google.com/dlpage/gaoptout?hl=de</a>."
+"installieren: <a href=\"https://tools.google.com/dlpage/gaoptout?hl=de\">"
+"https://tools.google.com/dlpage/gaoptout?hl=de</a>."
 
-#: Content/privacy_policy.php:8
+#: content/privacy_policy.php:8
 msgid ""
-"For more information about Google's data usage, settings and opt-out "
-"options, please visit Google's websites: <a href=\"https://www.google.com/"
-"intl/en/policies/privacy/partners\">https://www.google.com/intl/en/policies/"
-"privacy/partners</a> (\"Google's use of your data when you use websites or "
-"apps of our partners\"), <a href=\"https://policies.google.com/technologies/"
-"ads\">https://policies.google.com/technologies/ads</a> (\"Advertising use of "
-"data\"), <a href=\"https://adssettings.google.com/authenticated\">https://"
-"adssettings.google.com/authenticated</a> (\"Managing information Google uses "
-"to show you ads\")."
+"For more information about Google's data usage, settings and opt-out options,"
+" please visit Google's websites: <a href=\"https://www.google."
+"com/intl/en/policies/privacy/partners\">https://www.google."
+"com/intl/en/policies/privacy/partners</a> (\"Google's use of your data when "
+"you use websites or apps of our partners\"), <a href=\"https://policies."
+"google.com/technologies/ads\">https://policies.google."
+"com/technologies/ads</a> (\"Advertising use of data\"), <a href=\"https:"
+"//adssettings.google.com/authenticated\">https://adssettings.google."
+"com/authenticated</a> (\"Managing information Google uses to show you ads\")."
 msgstr ""
 "Weitere Informationen zur Datennutzung durch Google, Einstellungs- und "
-"Widerspruchsmöglichkeiten erfahren Sie auf den Webseiten von Google: <a href="
-"\"https://www.google.com/intl/de/policies/privacy/partners\">https://www."
-"google.com/intl/de/policies/privacy/partners</a> („Datennutzung durch Google "
-"bei Ihrer Nutzung von Websites oder Apps unserer Partner“), https://policies."
-"google.com/technologies/ads („Datennutzung zu Werbezwecken“), <a href="
-"\"https://adssettings.google.com/authenticated\">https://adssettings.google."
-"com/authenticated</a> („Informationen verwalten, die Google verwendet, um "
-"Ihnen Werbung einzublenden“)."
+"Widerspruchsmöglichkeiten erfahren Sie auf den Webseiten von Google: <a "
+"href=\"https://www.google.com/intl/de/policies/privacy/partners\">https:"
+"//www.google.com/intl/de/policies/privacy/partners</a> („Datennutzung durch "
+"Google bei Ihrer Nutzung von Websites oder Apps unserer Partner“), https:"
+"//policies.google.com/technologies/ads („Datennutzung zu Werbezwecken“), <a "
+"href=\"https://adssettings.google.com/authenticated\">https://adssettings."
+"google.com/authenticated</a> („Informationen verwalten, die Google verwendet,"
+" um Ihnen Werbung einzublenden“)."
 
-#: Content/privacy_policy.php:9
+#: content/privacy_policy.php:9
 msgid ""
 "Incidentally, the personal data will be anonymized or deleted after a lapse "
 "of 26 months."
@@ -195,7 +139,7 @@ msgstr ""
 "Im Übrigen werden die personenbezogenen Daten nach einem Ablauf von 26 "
 "Monaten anonymisiert oder gelöscht."
 
-#: Content/privacy_policy.php:11
+#: content/privacy_policy.php:11
 msgid "Opt-out for Google Analytics"
 msgstr "Opt-out für Google Analytics"
 
@@ -217,7 +161,6 @@ msgstr "Nachname"
 
 #: includes/mailchimp-form.php:25
 #, fuzzy
-#| msgid "Marketing permission"
 msgid "Permission"
 msgstr "Zustimmung"
 
@@ -233,47 +176,74 @@ msgstr ""
 msgid "Subscribe"
 msgstr "Abonnieren"
 
-#. Plugin Name of the plugin/theme
-msgid "Google Analytics by WebKinder"
-msgstr "Google Analytics by WebKinder"
+#: lib/Loader.php:155
+msgid "Do not track any visits from this device."
+msgstr "Keine Besuche von diesem Gerät tracken."
 
-#. Plugin URI of the plugin/theme
+#: lib/Plugin.php:66
+msgid "Donate to this plugin"
+msgstr "Erfahre das Wichtigste über jedes Update"
+
+#: lib/Settings.php:43
+msgid "Test your tracking code now!"
+msgstr "Teste deinen Tracking Code jetzt!"
+
+#: lib/Settings.php:110
+msgid "Anonymize IP\"s"
+msgstr "IP Anonymisierung"
+
+#: lib/Settings.php:126
+msgid "Track logged in users"
+msgstr "Eingeloggte Benutzer tracken"
+
+#: lib/Settings.php:142
+msgid "Use Google Tag Manager instead"
+msgstr "Google Tag Manager verwenden"
+
+#: lib/Settings.php:158
+msgid "Google Tag Manager ID"
+msgstr "Google Tag Manager ID"
+
+#: lib/Settings.php:176
+msgid ""
+"Enter your Google Analytics tracking code below. You can also use Google Tag "
+"Manager instead by checking the relevant setting."
+msgstr ""
+"Gib deinen Google Analytics Tracking Code unten ein. Alternativ kann auch "
+"Google Tag Manager verwendet werden, indem das entsprechende Setting gesetzt "
+"wird."
+
+#: lib/Settings.php:216
+msgid ""
+"This setting is only for Google Analytics. If you use GTM please set this "
+"setting in your GTM account."
+msgstr ""
+"Diese Einstellung gilt nur für Google Analytics. Falls Google Tag Manager "
+"genutzt wird, muss die Einstellung im Google Tag Manager Konto gesetzt "
+"werden."
+
+#. Name of the plugin
+msgid "Google Analytics and Google Tag Manager by WebKinder"
+msgstr "Google Analytics und Google Tag Manager by WebKinder"
+
+#. Description of the plugin
+msgid ""
+"Enable Google Analytics on all pages without tracking your own visits. You "
+"can exclude any logged in user as well as ignore a device completely by "
+"setting a cookie."
+msgstr ""
+"Aktiviere Google Analytics auf allen Seiten, ohne deine eigenen Besuche zu "
+"verfolgen. Du kannst jeden eingeloggten Nutzer ausschließen sowie ein Gerät "
+"vollständig ignorieren, indem du ein Cookie setzt."
+
+#. URI of the plugin
 msgid "https://wordpress.org/plugins/wk-google-analytics/"
 msgstr "https://wordpress.org/plugins/wk-google-analytics/"
 
-#. Description of the plugin/theme
-msgid "Google Analytics for WordPress without tracking your own visits"
-msgstr "Google Analytics für WordPress ohne die eigenen Besuche zu tacken"
-
-#. Author of the plugin/theme
+#. Author of the plugin
 msgid "WebKinder"
 msgstr "WebKinder"
 
-#. Author URI of the plugin/theme
+#. Author URI of the plugin
 msgid "https://www.webkinder.ch"
 msgstr "https://www.webkinder.ch"
-
-#~ msgid "Page visits from this device are not tracked."
-#~ msgstr "Seitenbesuche von diesem Gerät werden nicht getrackt."
-
-#~ msgid "This device is treated like any other"
-#~ msgstr "Dieses Gerät wird wie jedes Andere behandelt."
-
-#~ msgid "Use Google tag manager instead"
-#~ msgstr "Benutze Google Tag Manager"
-
-#~ msgid "Stay updated on our plugins"
-#~ msgstr "Erfahre das Neuste über unsere Plugins"
-
-#~ msgid ""
-#~ "Enter your Google Analytics tracking code below. There are two additional "
-#~ "mechanisms that allow you to stop tracking your own visits. The first one "
-#~ "checks if you are logged in as a WordPress User. The second one allows "
-#~ "you to stop tracking certain devices totally by setting a cookie."
-#~ msgstr ""
-#~ "Gib deinen Google Analytics Tracking Code unten ein. Es gibt zwei "
-#~ "zusätzliche Mechanismen, die dir erlauben deine eigenen Seitenbesuche "
-#~ "nicht mehr zu tracken. Der erste prüft, ob du als WordPress User "
-#~ "angemeldet bist. Der zweite gibt dir die Möglichkeit über ein Cookie "
-#~ "sämtliche Seitenbesuche von einem bestimmten Gerät aus nicht mehr zu "
-#~ "tracken."
