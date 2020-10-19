@@ -10,7 +10,7 @@
 </a>
 </center>
 
-# WebKinder Google Analytics Plugin
+# Google Analytics and Google Tag Manager Plugin
 
 This is the source repository for our plugin https://wordpress.org/plugins/wk-google-analytics/.
 

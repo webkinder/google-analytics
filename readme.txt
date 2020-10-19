@@ -1,4 +1,4 @@
-=== Google Analytics ===
+=== Google Analytics and Google Tag Manager ===
 Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 4.8
@@ -8,7 +8,7 @@ Stable tag: 1.9.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Google Analytics for WordPress without tracking your own visits.
+Google Analytics or Google Tag Manager for WordPress without tracking your own visits.
 
 == Description ==
 
