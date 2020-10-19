@@ -3,7 +3,7 @@
  * Plugin Name: Google Analytics and Google Tag Manager by WebKinder
  * Plugin URI: https://wordpress.org/plugins/wk-google-analytics/
  * Description: Enable Google Analytics on all pages without tracking your own visits. You can exclude any logged in user as well as ignore a device completely by setting a cookie.
- * Version: 1.9.0
+ * Version: 1.9.1
  * Author: WebKinder
  * Author URI: https://www.webkinder.ch
  * License: GPL2
