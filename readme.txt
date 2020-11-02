@@ -2,9 +2,9 @@
 Contributors: webkinder
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 4.8
-Tested up to: 5.5.1
+Tested up to: 5.5.3
 Requires PHP: 7.1
-Stable tag: 1.9.1
+Stable tag: 1.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,26 +12,31 @@ Google Analytics or Google Tag Manager for WordPress without tracking your own v
 
 == Description ==
 
-Enable Google Analytics on all pages without tracking your own visits. You can exclude any logged in user as well as ignore a device completely by setting a cookie.
+Deploy Google Analytics on your website without having to edit code and without tracking your own visits. You can exclude any logged in user from this and enable tracking solely for them. You can also ignore a device by ticking a box which sets a session cookie.
 
-New feature: You can now also use Google Tag Manager with this plugin.
+You can also enter your Google Tag Manager ID and disable tracking via GTM.
 
-We would love to hear your feedback in a [review](https://wordpress.org/support/plugin/wk-google-analytics/reviews/). It helps us improve and expand the plugin according to your needs.
+We would love to hear your [feedback](https://wordpress.org/support/plugin/wk-google-analytics/reviews/). It helps us improve and expand the plugin according to your needs.
 
 If you have any questions or feature requests, feel free to contact us via support@webkinder.ch.
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/wk-ga directory, or install the plugin through the WordPress plugins screen directly.
-1. Activate the plugin through the 'Plugins' screen in WordPress
-1. Use the Settings->Google Analytics screen to configure the plugin
-1. Test your Tracking Code as shown [here](https://support.google.com/analytics/answer/1008083?hl=en)
+1. Upload the folder in the zip file to your plugins directory or install the plugin via the WordPress admin panel option ‘Add new’. 
+1. Activate the plugin.
+1. Navigate to ‘Settings’ and ‘Google Analytics’ to configure the plugin and enter your Google Analytics tracking ID or your Google Tag Manager container ID.
+1. Check if the tracking works by following the [official Google documentation](https://support.google.com/analytics/answer/1008083?hl=en).
 
 == Screenshots ==
 
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.9.2 =
+
+* Updated wording
+* NoScript is now using wp_body_open action added with 5.2 if already supported
 
 = 1.9.1 =
 

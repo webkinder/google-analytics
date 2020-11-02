@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 "Project-Id-Version: Google Analytics by WebKinder\n"
-"POT-Creation-Date: 2020-10-19 14:58+0000\n"
+"POT-Creation-Date: 2020-11-02 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -97,74 +97,88 @@ msgstr ""
 msgid "Opt-out for Google Analytics"
 msgstr ""
 
-#: includes/mailchimp-form.php:11
-msgid "Stay updated on this plugin"
-msgstr ""
-
 #: includes/mailchimp-form.php:13
-msgid "Email Address"
+msgid "Stay informed about any changes to this plugin"
 msgstr ""
 
-#: includes/mailchimp-form.php:17
-msgid "First Name"
+#: includes/mailchimp-form.php:15
+msgid "Email address"
 msgstr ""
 
-#: includes/mailchimp-form.php:21
-msgid "Last Name"
+#: includes/mailchimp-form.php:20
+msgid "First name"
 msgstr ""
 
 #: includes/mailchimp-form.php:25
+msgid "Last name"
+msgstr ""
+
+#: includes/mailchimp-form.php:30
 msgid "Permission"
 msgstr ""
 
-#: includes/mailchimp-form.php:26
+#: includes/mailchimp-form.php:32
 msgid ""
-"I agree to my personal data being stored, used for distribution and to "
-"receive plugin news."
+"I agree that my personal data will be stored and used to send plugin updates "
+"to my email address."
 msgstr ""
 
-#: includes/mailchimp-form.php:33
+#: includes/mailchimp-form.php:43
 msgid "Subscribe"
 msgstr ""
 
 #: lib/Loader.php:155
-msgid "Do not track any visits from this device."
+msgid "Do not track any visits from this device"
 msgstr ""
 
-#: lib/Plugin.php:66
+#: lib/Loader.php:156
+msgid ""
+"As long as you do not activate this option while you are using the incognito "
+"mode of your browser, a cookie will be stored on your device. This cookie "
+"will have to be renewed after one year."
+msgstr ""
+
+#: lib/Plugin.php:71
 msgid "Donate to this plugin"
 msgstr ""
 
-#: lib/Settings.php:43
+#: lib/Settings.php:46
 msgid "Test your tracking code now!"
 msgstr ""
 
-#: lib/Settings.php:110
-msgid "Anonymize IP\"s"
+#: lib/Settings.php:96
+msgid "Google Analytics Tracking ID"
 msgstr ""
 
-#: lib/Settings.php:126
+#: lib/Settings.php:112
+msgid "IP Anonymization"
+msgstr ""
+
+#: lib/Settings.php:128
 msgid "Track logged in users"
 msgstr ""
 
-#: lib/Settings.php:142
+#: lib/Settings.php:144
 msgid "Use Google Tag Manager instead"
 msgstr ""
 
-#: lib/Settings.php:158
+#: lib/Settings.php:160
 msgid "Google Tag Manager ID"
 msgstr ""
 
-#: lib/Settings.php:176
+#: lib/Settings.php:180
 msgid ""
-"Enter your Google Analytics tracking code below. You can also use Google Tag "
-"Manager instead by checking the relevant setting."
+"Enter your Google Analytics tracking ID below. Should you use Google Tag "
+"Manager to deploy Google Analytics, enter your GTM Container ID in the "
+"respective field and tick the box “Use Google Tag Manager instead”."
 msgstr ""
 
-#: lib/Settings.php:216
+#: lib/Settings.php:224
 msgid ""
-"This setting is only for Google Analytics. If you use GTM please set this "
-"setting in your GTM account."
+"This setting is only effective if you use Google Analytics. If you use "
+"Google Tag Manager to deploy Google Analytics, you have to enable <a "
+"href=\"https://support.google.com/analytics/answer/2763052?hl=de\" "
+"target=\"_blank\">IP Anonymization</a> in your GTM settings."
 msgstr ""
 
 #. Name of the plugin
@@ -173,9 +187,9 @@ msgstr ""
 
 #. Description of the plugin
 msgid ""
-"Enable Google Analytics on all pages without tracking your own visits. You "
-"can exclude any logged in user as well as ignore a device completely by "
-"setting a cookie."
+"Deploy Google Analytics on your website without having to edit code and "
+"without tracking your own visits. You can exclude any logged in user from "
+"this and enable tracking solely for them."
 msgstr ""
 
 #. URI of the plugin

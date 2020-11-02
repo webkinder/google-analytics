@@ -8,7 +8,7 @@ class Plugin
 	/**
 	 * @var Loader
 	 */
-	 public $loader;
+	public $loader;
 
 	/**
 	 * @var Settings
@@ -20,9 +20,6 @@ class Plugin
 
 		//i18n
 		add_action('plugins_loaded', array($this, 'load_textdomain'));
-
-		//opt-out button
-		OptOutButton::init();
 
 		//settings
 		$this->settings = new Settings();
@@ -41,8 +38,16 @@ class Plugin
 		add_action('wp_enqueue_scripts', array($this->loader, 'register_ga_scripts'));
 
 		//Google Tag Manager noscript footer
-		add_action('wp_footer', array($this->loader, 'google_tag_manager_noscript'));
+		add_action('wp_body_open', function () {
+			$this->loader->google_tag_manager_noscript();
+		});
 
+		add_action('wp_footer', function () {
+			//Google Tag Manager noscript footer (if wp_body_open is not used in theme yet)
+			if (did_action('wp_body_open') === 0) {
+				$this->loader->google_tag_manager_noscript();
+			}
+		});
 
 		//additional links to admin plugin page
 		add_filter('plugin_row_meta', array($this, 'additional_admin_information_links'), 10, 2);
@@ -67,7 +72,6 @@ class Plugin
 		}
 
 		return $links;
-
 	}
 
 
