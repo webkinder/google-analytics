@@ -125,9 +125,17 @@ gtag('config', '<?php echo $GA_TRACKING_CODE; ?>');
 	{
 		// Google Tag Manager script in <head>
 		if (get_option('ga_use_tag_manager')) {
-			wp_register_script('wk-tag-manager-script', '');
-			wp_enqueue_script('wk-tag-manager-script');
-			wp_add_inline_script('wk-tag-manager-script', $this->google_tag_manager_script());
+			global $wp_version;
+			if (version_compare($wp_version, '5.1', '>=')) {
+				// WordPress version is greater than and equal 5.1 supports inline script without registered dependencies
+				wp_register_script('wk-tag-manager-script', '');
+				wp_enqueue_script('wk-tag-manager-script');
+				wp_add_inline_script('wk-tag-manager-script', $this->google_tag_manager_script());
+			} else {
+				add_action('wp_head', function () {
+					echo '<script type="text/javascript">' . $this->google_tag_manager_script() . '</script>';
+				});
+			}
 		}
 
 		// Google Analytics script in <head>

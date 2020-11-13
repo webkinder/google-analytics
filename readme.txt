@@ -4,7 +4,7 @@ Tags: google analytics, tracking code, analytics, anonymization, anonymize, anon
 Requires at least: 4.8
 Tested up to: 5.5.3
 Requires PHP: 7.1
-Stable tag: 1.9.2
+Stable tag: 1.9.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.9.3 =
+
+* Fallback for wp_add_inline_script() without registered script used for Google Tag Manager in WordPress with versions below 5.1
 
 = 1.9.2 =
 
