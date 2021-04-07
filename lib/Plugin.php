@@ -53,9 +53,9 @@ class Plugin
 		add_filter('plugin_row_meta', array($this, 'additional_admin_information_links'), 10, 2);
 		add_filter('plugin_action_links_' . plugin_basename(__FILE__), array($this, 'additional_admin_action_links'));
 
-		add_filter('wp_get_default_privacy_policy_content', array($this, 'add_privacy_policy_default_text'));
+		// add privacy policy content
+		add_action('admin_init', [$this, 'register_privacy_policy_content']);
 	}
-
 
 	/**
 	 * Adds custom links to wk-google-analytics on admin plugin screen on the RIGHT
@@ -74,7 +74,6 @@ class Plugin
 		return $links;
 	}
 
-
 	/**
 	 * Sets up the translations in /lang directory
 	 *
@@ -87,18 +86,8 @@ class Plugin
 	}
 
 	/**
-	 * Add GA Text to default text
-	 * @param $content
-	 * @return string
-	 */
-	function add_privacy_policy_default_text($content)
-	{
-		$content .= self::get_ga_policy_text();
-		return $content;
-	}
-
-	/**
 	 * Get the text for GA
+	 * 
 	 * @return string
 	 */
 	static function get_ga_policy_text()
@@ -107,5 +96,15 @@ class Plugin
 		include WK_GOOGLE_ANALYTICS_DIR . '/content/privacy_policy.php';
 		$content = ob_get_clean();
 		return $content;
+	}
+
+	/**
+	 * Add privacy policy content
+	 *
+	 * @return void
+	 */
+	public function register_privacy_policy_content()
+	{
+		wp_add_privacy_policy_content(__('WebKinder Google Analytics', 'wk-google-analytics'), self::get_ga_policy_text());
 	}
 }
