@@ -33,6 +33,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 == Changelog ==
 
+= 1.9.4 =
+
+* Fix deprecated warning "wp_get_default_privacy_policy_content" added with WordPress 5.7
+
 = 1.9.3 =
 
 * Fallback for wp_add_inline_script() without registered script used for Google Tag Manager in WordPress with versions below 5.1
