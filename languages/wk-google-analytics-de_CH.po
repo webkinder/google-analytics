@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics by WebKinder\n"
+"Project-Id-Version: Google Analytics by WEBKINDER\n"
 "POT-Creation-Date: 2020-11-02 15:04+0000\n"
 "PO-Revision-Date: 2020-11-02 15:08+0000\n"
 "Last-Translator: \n"
@@ -246,8 +246,8 @@ msgstr ""
 "im Google Tag Manager Konto gesetzt werden."
 
 #. Name of the plugin
-msgid "Google Analytics and Google Tag Manager by WebKinder"
-msgstr "Google Analytics und Google Tag Manager by WebKinder"
+msgid "Google Analytics and Google Tag Manager by WEBKINDER"
+msgstr "Google Analytics und Google Tag Manager by WEBKINDER"
 
 #. Description of the plugin
 msgid ""
@@ -261,8 +261,8 @@ msgid "https://wordpress.org/plugins/wk-google-analytics/"
 msgstr "https://wordpress.org/plugins/wk-google-analytics/"
 
 #. Author of the plugin
-msgid "WebKinder"
-msgstr "WebKinder"
+msgid "WEBKINDER"
+msgstr "WEBKINDER"
 
 #. Author URI of the plugin
 msgid "https://www.webkinder.ch"

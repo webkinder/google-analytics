@@ -1,8 +1,8 @@
 === Google Analytics and Google Tag Manager ===
-Contributors: webkinder
+Contributors: WEBKINDER
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
 Requires at least: 4.8
-Tested up to: 5.5.3
+Tested up to: 5.9.3
 Requires PHP: 7.1
 Stable tag: 1.9.4
 License: GPLv2 or later
@@ -22,7 +22,7 @@ If you have any questions or feature requests, feel free to contact us via suppo
 
 == Installation ==
 
-1. Upload the folder in the zip file to your plugins directory or install the plugin via the WordPress admin panel option ‘Add new’. 
+1. Upload the folder in the zip file to your plugins directory or install the plugin via the WordPress admin panel option ‘Add new’.
 1. Activate the plugin.
 1. Navigate to ‘Settings’ and ‘Google Analytics’ to configure the plugin and enter your Google Analytics tracking ID or your Google Tag Manager container ID.
 1. Check if the tracking works by following the [official Google documentation](https://support.google.com/analytics/answer/1008083?hl=en).
@@ -32,6 +32,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.9.5 =
+
+* Changed wording and updated plugin icon and banner
 
 = 1.9.4 =
 

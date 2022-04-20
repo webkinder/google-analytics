@@ -5,16 +5,14 @@
     "wordpress",
     "plugin"
   ],
-  "version": "1.9.4",
+  "version": "1.9.5",
   "homepage": "https://www.webkinder.ch/",
   "license": "GPL-3.0+",
-  "authors": [
-    {
-      "name": "WebKinder",
-      "email": "support@webkinder.ch",
-      "homepage": "https://www.webkinder.ch/"
-    }
-  ],
+  "authors": [{
+    "name": "WEBKINDER",
+    "email": "support@webkinder.ch",
+    "homepage": "https://www.webkinder.ch/"
+  }],
   "type": "wordpress-plugin",
   "require": {
     "php": ">=7.1",

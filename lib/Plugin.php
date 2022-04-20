@@ -87,7 +87,7 @@ class Plugin
 
 	/**
 	 * Get the text for GA
-	 * 
+	 *
 	 * @return string
 	 */
 	static function get_ga_policy_text()
@@ -105,6 +105,6 @@ class Plugin
 	 */
 	public function register_privacy_policy_content()
 	{
-		wp_add_privacy_policy_content(__('WebKinder Google Analytics', 'wk-google-analytics'), self::get_ga_policy_text());
+		wp_add_privacy_policy_content(__('WEBKINDER Google Analytics', 'wk-google-analytics'), self::get_ga_policy_text());
 	}
 }

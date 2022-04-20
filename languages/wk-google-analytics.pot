@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
-"Project-Id-Version: Google Analytics by WebKinder\n"
+"Project-Id-Version: Google Analytics by WEBKINDER\n"
 "POT-Creation-Date: 2020-11-02 15:04+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: \n"
@@ -182,7 +182,7 @@ msgid ""
 msgstr ""
 
 #. Name of the plugin
-msgid "Google Analytics and Google Tag Manager by WebKinder"
+msgid "Google Analytics and Google Tag Manager by WEBKINDER"
 msgstr ""
 
 #. Description of the plugin
@@ -197,7 +197,7 @@ msgid "https://wordpress.org/plugins/wk-google-analytics/"
 msgstr ""
 
 #. Author of the plugin
-msgid "WebKinder"
+msgid "WEBKINDER"
 msgstr ""
 
 #. Author URI of the plugin
