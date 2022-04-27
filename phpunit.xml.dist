@@ -18,9 +18,6 @@
 	<filter>
 		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">./Classes</directory>
-			<exclude>
-				<file>./admin/mailchimp-form.php</file>
-			</exclude>
 			<file>./wk-ga.php</file>
 		</whitelist>
 	</filter>

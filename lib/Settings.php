@@ -54,9 +54,6 @@ class Settings
 					<?php submit_button(); ?>
 				</form>
 			</div>
-			<div class="wk-right-part">
-				<?php include_once(WK_GOOGLE_ANALYTICS_DIR . "/includes/mailchimp-form.php"); ?>
-			</div>
 		</div>
 	<?php
 
