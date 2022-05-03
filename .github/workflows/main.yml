@@ -22,7 +22,7 @@ jobs:
         extension-csv: mbstring, intl #optional, setup extensions
         ini-values-csv: post_max_size=256M, max_execution_time=270, short_open_tag=On #optional, setup php.ini configuration
         coverage: xdebug #optional, setup coverage driver
-        tools: composer:2.1.8, phpunit:${{ matrix.phpunit-versions }}
+        tools: composer:2.1, phpunit:${{ matrix.phpunit-versions }}
 
     - name: Print PHP version
       run: echo ${{ steps.setup-php.outputs.php-version }}
