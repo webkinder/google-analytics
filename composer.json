@@ -16,7 +16,7 @@
   "type": "wordpress-plugin",
   "require": {
     "php": ">=7.1",
-    "composer/installers": "v1.2.0"
+    "composer/installers": "v2.1"
   },
   "require-dev": {
     "phpunit/phpunit": "^6"
