@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         operating-system: [ubuntu-latest]
-        php-versions: ['7.1', '7.2', '7.3', '7.4']
+        php-versions: ['7.2', '7.3', '7.4']
         phpunit-versions: ['latest']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
@@ -20,9 +20,9 @@ jobs:
       with:
         php-version: ${{ matrix.php-versions }}
         extension-csv: mbstring, intl #optional, setup extensions
-        ini-values-csv: post_max_size=256M, max_execution_time=180, short_open_tag=On #optional, setup php.ini configuration
+        ini-values-csv: post_max_size=256M, max_execution_time=270, short_open_tag=On #optional, setup php.ini configuration
         coverage: xdebug #optional, setup coverage driver
-        tools: composer:1.2, phpunit:${{ matrix.phpunit-versions }}
+        tools: composer:2.1.8, phpunit:${{ matrix.phpunit-versions }}
 
     - name: Print PHP version
       run: echo ${{ steps.setup-php.outputs.php-version }}
