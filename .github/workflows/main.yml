@@ -38,7 +38,7 @@ jobs:
       run: echo ${{ steps.setup-php.outputs.php-version }}
 
     - name: Install dependencies
-      run: composer install -o -–no-progress
+      run: composer install -o --no-progress
 
     - name: PHPUnit
       run: |
