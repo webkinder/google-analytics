@@ -37,19 +37,8 @@ jobs:
     - name: Print PHP version
       run: echo ${{ steps.setup-php.outputs.php-version }}
 
-    - name: Get composer cache directory
-      id: composer-cache
-      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-
-    - name: Cache dependencies
-      uses: actions/cache@v2
-      with:
-        path: ${{ steps.composer-cache.outputs.dir }}
-        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-        restore-keys: ${{ runner.os }}-composer-
-
     - name: Install dependencies
-      run: composer install --optimize-autoloader --prefer-dist
+      run: composer install -o –no-progress
 
     - name: PHPUnit
       run: |
