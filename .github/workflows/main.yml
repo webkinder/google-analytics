@@ -9,25 +9,37 @@ jobs:
       matrix:
         operating-system: [ubuntu-latest]
         php-versions: ['7.1', '7.2', '7.3', '7.4']
+        phpunit-versions: ['latest']
     name: PHP ${{ matrix.php-versions }} Test on ${{ matrix.operating-system }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
 
     - name: Setup PHP
-      uses: shivammathur/setup-php@v1
+      uses: shivammathur/setup-php@v2
       with:
         php-version: ${{ matrix.php-versions }}
         extension-csv: mbstring, intl #optional, setup extensions
-        ini-values-csv: post_max_size=256M, short_open_tag=On #optional, setup php.ini configuration
+        ini-values-csv: post_max_size=256M, max_execution_time=180, short_open_tag=On #optional, setup php.ini configuration
         coverage: xdebug #optional, setup coverage driver
-        pecl: false #optional, setup PECL
+        tools: composer:1.2, phpunit:${{ matrix.phpunit-versions }}
 
-    - name: Check PHP Version
-      run: php -v
+    - name: Print PHP version
+      run: echo ${{ steps.setup-php.outputs.php-version }}
+
+    - name: Get composer cache directory
+      id: composer-cache
+      run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+    - name: Cache dependencies
+      uses: actions/cache@v2
+      with:
+        path: ${{ steps.composer-cache.outputs.dir }}
+        key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+        restore-keys: ${{ runner.os }}-composer-
 
     - name: Install dependencies
-      uses: php-actions/composer@v6
+      run: composer install --prefer-dist
 
     - name: Install WP Tests
       run: bash bin/install-wp-tests.sh wordpress_test root root localhost latest
