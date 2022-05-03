@@ -1,10 +1,10 @@
 === Google Analytics and Google Tag Manager ===
 Contributors: WEBKINDER
 Tags: google analytics, tracking code, analytics, anonymization, anonymize, anonymizeIp, cookie, Datenschutz, ga, gaoptout, google, googleanalytics, google tag manager, gtm, Datenschutz, datenschutzkonform, script, snippet
-Requires at least: 4.8
+Requires at least: 4.9
 Tested up to: 5.9.3
-Requires PHP: 7.1
-Stable tag: 1.9.7
+Requires PHP: 7.2
+Stable tag: 1.9.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.9.8 =
+
+* Update composer packages and unit testing for CI
 
 = 1.9.7 =
 
