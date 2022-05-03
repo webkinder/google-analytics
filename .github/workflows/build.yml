@@ -4,17 +4,38 @@ on:
   push:
     tags:
     - "*"
-    
+
 jobs:
   tag:
     name: Deploy to WordPress
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: GitHub Action for Composer
-        uses: pxgamer/composer-action@v2.1.0
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
-          command: install --optimize-autoloader --prefer-dist --no-dev
+          php-version: '7.4'
+          extensions: mbstring, intl #optional, setup extensions
+          ini-values: post_max_size=256M, max_execution_time=270, short_open_tag=On #optional, setup php.ini configuration
+          coverage: xdebug #optional, setup coverage driver
+          tools: composer:2.1
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --optimize-autoloader --prefer-dist --no-dev
+
       - name: WordPress Plugin Deploy
         uses: 10up/action-wordpress-plugin-deploy@master
         env:
