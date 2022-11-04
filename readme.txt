@@ -4,7 +4,7 @@ Tags: google analytics, tracking code, analytics, anonymization, anonymize, anon
 Requires at least: 4.9
 Tested up to: 6.1
 Requires PHP: 7.2
-Stable tag: 1.9.9
+Stable tag: 1.9.10
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,10 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.9.10 =
+
+* Updated wording
 
 = 1.9.9 =
 
