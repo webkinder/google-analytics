@@ -5,7 +5,7 @@
     "wordpress",
     "plugin"
   ],
-  "version": "1.10.1",
+  "version": "1.11.0",
   "homepage": "https://www.webkinder.ch/",
   "license": "GPL-3.0+",
   "authors": [
@@ -27,6 +27,11 @@
   "autoload": {
     "psr-4": {
       "WebKinder\\GoogleAnalytics\\": "lib/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
     }
   }
 }
