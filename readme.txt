@@ -3,7 +3,7 @@ Contributors: WEBKINDER
 Tags: google analytics, analytics, anonymize, google tag manager, gtm
 Requires at least: 4.9
 Tested up to: 6.6
-Requires PHP: 7.2
+Requires PHP: 7.3
 Stable tag: 1.11.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html

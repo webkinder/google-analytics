@@ -17,7 +17,7 @@
   ],
   "type": "wordpress-plugin",
   "require": {
-    "php": ">=7.2",
+    "php": ">=7.3",
     "composer/installers": "v2.1"
   },
   "require-dev": {
