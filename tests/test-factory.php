@@ -31,16 +31,8 @@ class FactoryTest extends WP_UnitTestCase {
 
 	function test_tracking_code_output()
 	{
-
-		ob_start();
-
-		wp_head();
-
-		$head_contents = ob_get_clean();
-
-		$output_analytics = strpos($head_contents, "id='wk-analytics-script-js-after'") > -1;
-
-		$this->assertTrue($output_analytics);
+		do_action('wp_enqueue_scripts');
+		$this->assertTrue(wp_script_is('wk-analytics-script', 'enqueued'));
 
 	}
 
