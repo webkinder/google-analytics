@@ -10,7 +10,7 @@ use WebKinder\GoogleAnalytics\PluginFactory;
  * Plugin Name: WEBKINDER Integration for Google Analytics and Google Tag Manager
  * Plugin URI: https://wordpress.org/plugins/wk-google-analytics/
  * Description: Deploy Google Analytics on your website without having to edit code and without tracking your own visits. You can exclude any logged in user from this and enable tracking solely for them.
- * Version: 1.11.4
+ * Version: 1.11.5
  * Author: WEBKINDER
  * Author URI: https://www.webkinder.ch/
  * License: GPL2

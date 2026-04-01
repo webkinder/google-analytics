@@ -2,9 +2,9 @@
 Contributors: WEBKINDER
 Tags: google analytics, analytics, anonymize, google tag manager, gtm
 Requires at least: 4.9
-Tested up to: 6.6
+Tested up to: 6.9
 Requires PHP: 7.3
-Stable tag: 1.11.4
+Stable tag: 1.11.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,6 +32,11 @@ If you have any questions or feature requests, feel free to contact us via suppo
 1. The settings page of this plugin. The cookie mechanism is activated here.
 
 == Changelog ==
+
+= 1.11.5 =
+
+* Tested up to 6.9
+* Maintenance fixes
 
 = 1.11.4 =
 
