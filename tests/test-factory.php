@@ -16,8 +16,10 @@ class FactoryTest extends WP_UnitTestCase {
 	// Check Output Type
 	// Check anonymisation
 
-	public function setUp()
+	public function setUp(): void
 	{
+		parent::setUp();
+
 		update_option('ga_tracking_code', 'UA-12345678');
 
 		$this->_plugin_instance = WebKinder\GoogleAnalytics\PluginFactory::create();
