@@ -5,6 +5,17 @@ namespace WebKinder\GoogleAnalytics;
 class Settings
 {
 	/**
+	 * Sanitize checkbox input to a 0/1 string.
+	 *
+	 * @param mixed $value
+	 * @return string
+	 */
+	public function sanitize_checkbox($value)
+	{
+		return ! empty( $value ) ? '1' : '0';
+	}
+
+	/**
 	 * Add an options page under 'Settings'.
 	 *
 	 * @since 1.0
@@ -13,8 +24,8 @@ class Settings
 	public function settings_page()
 	{
 		add_options_page(
-			'Google Analytics + Tag Manager by WEBKINDER',
-			'Google Analytics',
+			'WEBKINDER Integration for Google Analytics and Google Tag Manager',
+			'WEBKINDER Analytics Integration',
 			'manage_options',
 			'google_analytics',
 			[$this, 'settings_content']
@@ -38,7 +49,7 @@ class Settings
 				<div class="updated fade">
 					<p>
 						<strong>
-							<a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php _e('Test your tracking code now!', 'wk-google-analytics'); ?></a>
+							<a target="_blank" href="https://support.google.com/analytics/answer/1008083"><?php esc_html_e('Test your tracking code now!', 'wk-google-analytics'); ?></a>
 						</strong>
 					</p>
 				</div>
@@ -75,7 +86,11 @@ class Settings
 		// @since 1.0
 		register_setting(
 			'wk_ga_google_analytics',
-			'ga_tracking_code'
+			'ga_tracking_code',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			]
 		);
 
 		add_settings_field(
@@ -89,7 +104,11 @@ class Settings
 		// @since 1.0
 		register_setting(
 			'wk_ga_google_analytics',
-			'track_logged_in'
+			'track_logged_in',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [$this, 'sanitize_checkbox'],
+			]
 		);
 
 		add_settings_field(
@@ -103,7 +122,11 @@ class Settings
 		// @since 1.1
 		register_setting(
 			'wk_ga_google_analytics',
-			'ga_anonymize_ip'
+			'ga_anonymize_ip',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [$this, 'sanitize_checkbox'],
+			]
 		);
 
 		add_settings_field(
@@ -117,7 +140,11 @@ class Settings
 		// @since 1.2
 		register_setting(
 			'wk_ga_google_analytics',
-			'ga_use_tag_manager'
+			'ga_use_tag_manager',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => [$this, 'sanitize_checkbox'],
+			]
 		);
 
 		add_settings_field(
@@ -131,7 +158,11 @@ class Settings
 		// @since 1.2
 		register_setting(
 			'wk_ga_google_analytics',
-			'ga_tag_manager_id'
+			'ga_tag_manager_id',
+			[
+				'type'              => 'string',
+				'sanitize_callback' => 'sanitize_text_field',
+			]
 		);
 
 		add_settings_field(
@@ -153,7 +184,7 @@ class Settings
 		wp_enqueue_script('cookie-js');
 		wp_enqueue_script('wk-ga-admin-js');
 		?>
-		<p><?php _e('Enter your Google Analytics tracking ID below. Should you use Google Tag Manager to deploy Google Analytics, enter your GTM Container ID in the respective field and tick the box “Use Google Tag Manager instead”.', 'wk-google-analytics'); ?>
+		<p><?php esc_html_e('Enter your Google Analytics tracking ID below. Should you use Google Tag Manager to deploy Google Analytics, enter your GTM Container ID in the respective field and tick the box “Use Google Tag Manager instead”.', 'wk-google-analytics'); ?>
 		</p>
 	<?php
 	}
@@ -187,9 +218,9 @@ class Settings
 		?>
 
 		<div class="anonymize-ip-tooltip">
-			<input type="hidden" name="<?php echo $field; ?>" value="0">
-			<input type="checkbox" name="<?php echo $field; ?>" value="1" <?php checked($value); ?> />
-			<span class="tooltip-text"><?php echo __('This setting is only effective if you use Google Analytics. If you use Google Tag Manager to deploy Google Analytics, you have to enable <a href="https://support.google.com/analytics/answer/2763052?hl=de" target="_blank">IP Anonymization</a> in your GTM settings.', 'wk-google-analytics'); ?></span>
+			<input type="hidden" name="<?php echo esc_attr($field); ?>" value="0">
+			<input type="checkbox" name="<?php echo esc_attr($field); ?>" value="1" <?php checked($value); ?> />
+			<span class="tooltip-text"><?php echo wp_kses_post( __('This setting is only effective if you use Google Analytics. If you use Google Tag Manager to deploy Google Analytics, you have to enable <a href="https://support.google.com/analytics/answer/2763052?hl=de" target="_blank">IP Anonymization</a> in your GTM settings.', 'wk-google-analytics') ); ?></span>
 		</div>
 
 		<style>

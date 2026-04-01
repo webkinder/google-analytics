@@ -15,7 +15,6 @@ phpcs.xml.dist
 phpunit.xml.dist
 tests
 bin
-composer.json
 composer.lock
 README.md
 CONTRIBUTING.md

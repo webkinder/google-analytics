@@ -150,17 +150,18 @@ gtag('config', '<?php echo $ga_tracking_code; ?>');
 	public function register_public_scripts()
 	{
 		// cookie library
-		wp_register_script('cookie-js', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)).'/js/js.cookie.js');
+		wp_register_script('cookie-js', plugins_url('js/js.cookie.js', WK_GA_PLUGIN_FILE));
 
 		// admin js for cookies
-		wp_register_script('wk-ga-admin-js', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)).'/js/admin-functions.js', ['jquery', 'cookie-js']);
+		wp_register_script('wk-ga-admin-js', plugins_url('js/admin-functions.js', WK_GA_PLUGIN_FILE), ['jquery', 'cookie-js']);
 
 		// translate JavaScript
 		$translation_array = [
+			'UntrackText' => __('Do not track any visits from this device', 'wk-google-analytics'),
 			'TrackText' => __('Do not track any visits from this device', 'wk-google-analytics'),
 			'TrackHint' => __('As long as you do not activate this option while you are using the incognito mode of your browser, a cookie will be stored on your device. This cookie will have to be renewed after one year.', 'wk-google-analytics'),
 		];
-		wp_localize_script('wk-ga-admin-js', 'text_content', $translation_array);
+		wp_localize_script('wk-ga-admin-js', 'wk_ga_text_content', $translation_array);
 	}
 
 	/**
@@ -202,6 +203,6 @@ return false;
 		}
 
 		// admin styles
-		wp_enqueue_style('custom-admin-styles', plugins_url(plugin_basename(WK_GOOGLE_ANALYTICS_DIR)).'/css/admin-styles.css');
+		wp_enqueue_style('wk-ga-admin-styles', plugins_url('css/admin-styles.css', WK_GA_PLUGIN_FILE));
 	}
 }

@@ -1,6 +1,6 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: Google Analytics by WEBKINDER\n"
+"Project-Id-Version: WEBKINDER Integration for Google Analytics and Google Tag Manager\n"
 "POT-Creation-Date: 2020-11-02 15:04+0000\n"
 "PO-Revision-Date: 2020-11-02 15:13+0000\n"
 "Last-Translator: \n"
@@ -237,8 +237,8 @@ msgstr ""
 "im Google Tag Manager Konto gesetzt werden."
 
 #. Name of the plugin
-msgid "Google Analytics and Google Tag Manager by WEBKINDER"
-msgstr "Google Analytics und Google Tag Manager by WEBKINDER"
+msgid "WEBKINDER Integration for Google Analytics and Google Tag Manager"
+msgstr "WEBKINDER Integration für Google Analytics und Google Tag Manager"
 
 #. Description of the plugin
 msgid ""

@@ -5,9 +5,9 @@
 
 var WKGA_AdminFunctions = {
   CookieName: "wp_wk_ga_untrack_" + document.location.hostname,
-  UntrackText: text_content.UntrackText,
-  TrackText: text_content.TrackText,
-  TrackHint: text_content.TrackHint,
+  UntrackText: wk_ga_text_content.UntrackText,
+  TrackText: wk_ga_text_content.TrackText,
+  TrackHint: wk_ga_text_content.TrackHint,
 
   init: function (containerID, useTagManager) {
     //cookie handling

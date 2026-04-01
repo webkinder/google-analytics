@@ -68,7 +68,7 @@ class Plugin
 	{
 
 		if (dirname($file) == basename(WK_GOOGLE_ANALYTICS_DIR)) {
-			$links[] = '<a href="http://bit.ly/2jnKboN">' . __('Donate to this plugin', 'wk-google-analytics') . '</a>';
+			$links[] = '<a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=N4XNNFC943PDL&ssrt=1775055878324">' . esc_html__( 'Donate to this plugin', 'wk-google-analytics' ) . '</a>';
 		}
 
 		return $links;
@@ -105,6 +105,6 @@ class Plugin
 	 */
 	public function register_privacy_policy_content()
 	{
-		wp_add_privacy_policy_content(__('WEBKINDER Google Analytics', 'wk-google-analytics'), self::get_ga_policy_text());
+		wp_add_privacy_policy_content( esc_html__( 'WEBKINDER Integration for Google Analytics and Google Tag Manager', 'wk-google-analytics' ), self::get_ga_policy_text() );
 	}
 }
